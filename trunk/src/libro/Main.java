@@ -58,7 +58,9 @@ public class Main {
 		p.ver(s.AgregarCapitulo(l, "2.2", "Seccion 1"), Sistema.Retorno.OK, "Se agregó el subcapítulo 2.2.1");
 		p.ver(s.AgregarCapitulo(l, "2.2", "Seccion 2"), Sistema.Retorno.OK, "Se agregó el subcapítulo 2.2.2");
 		p.ver(s.AgregarCapitulo(l, "2", "Parte 3"), Sistema.Retorno.OK, "Se agregó el subcapítulo 2.3");
-		//p.ver(s.AgregarCapitulo(l, "2.3", " Seccion 3"),Sistema.Retorno.OK, "Se agregó el subcapítulo 2.3.1");
+		p.ver(s.AgregarCapitulo(l, "2.3", " Seccion 3"),Sistema.Retorno.OK, "Se agregó el subcapítulo 2.3.1");
+		p.ver(s.AgregarCapitulo(l, "2.3.1", " ger"),Sistema.Retorno.OK, "Se agregó el subcapítulo 2.3.1");
+		p.ver(s.AgregarCapitulo(l, "2.3", " Seccion 4"),Sistema.Retorno.OK, "Se agregó el subcapítulo 2.3.1");
         
         p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos");
         
