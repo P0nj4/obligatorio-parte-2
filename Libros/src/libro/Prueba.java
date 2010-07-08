@@ -36,7 +36,7 @@ public void ver(Retorno retorno, Retorno retornoEsperado, String comentario)
 
 void imprimirComentario(String comentario)
 {
-	if ( comentario!=null || !comentario.isEmpty())
+	if ( comentario!=null || !comentario.equals(""))
 	{
 		System.out.println("\n  Comentario: " + comentario );
 		System.out.println();
