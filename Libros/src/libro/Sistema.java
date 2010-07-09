@@ -33,7 +33,8 @@ public class Sistema {
 	
 
 	public Retorno MostrarIndiceNiveles(Libro l, int nivelDesde, int nivelHasta) {
-		return Retorno.NO_IMPLEMENTADA;
+		l.toString(nivelDesde, nivelHasta);
+		return Retorno.OK;
 	}
 
 	public Retorno AgregarPalabraClave(Libro l, String nroCapitulo, String clave) {

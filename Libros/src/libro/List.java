@@ -48,7 +48,8 @@ public class List {
 	}
 
 	/**
-	 * Retorna un elemento del tipo nodeList que corresponda al id recibido por parametro
+	 * Retorna un elemento del tipo nodeList que corresponda al id recibido por
+	 * parametro
 	 * 
 	 * @param id
 	 *            id buscado
@@ -107,25 +108,35 @@ public class List {
 		}
 	}
 
-	public String toString() {
+	// private static String result = new String();
+
+	public void toString(String IdCount, StringBuffer res, int level, int start, int end) {
 		if (!this.isEmpty()) {
 			NodeList aux = this.first;
-			String result = "";
+			int ref = 0;
 			while (aux != null) {
-				if (!aux.getChilds().isEmpty()) {
-					result += "\n \t" + aux.getChilds().toString();
+				ref++;
+				String newId = IdCount + ref + "";
+				if (level >= start && level <= end) {
+					res.append("\n " + newId + aux.getName()); // += "\n " +
+					// newId +
+					// aux.getName();
+					if (!aux.getChilds().isEmpty()) {
+						aux.getChilds().toString(newId + ".", res, level + 1, start, end);
+					}
+				} else {
+					aux.getChilds().toString(newId + ".", res, level + 1, start, end);
 				}
-				result += "\n" + aux.getName();
 				aux = aux.getNext();
 			}
-			return result;
+
 		}
-		return "";
+
 	}
 
 	public void printBook() {
 		NodeList libro = this.first;
-		
+
 		int id = 1;
 
 		String idStr = id + "";
@@ -144,7 +155,7 @@ public class List {
 			libro = libro.getNext();
 		}
 	}
-	
+
 	public void printChildrens(NodeList capitulos, String id, int contador) {
 
 		while (capitulos != null) {
@@ -156,7 +167,6 @@ public class List {
 				String idCompleto = id + "." + contador;
 				int nuevo = 1;
 				printChildrens(subCapitulos, idCompleto, nuevo);
-
 			}
 			contador++;
 			capitulos = capitulos.getNext();
