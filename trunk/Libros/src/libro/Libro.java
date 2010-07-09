@@ -47,10 +47,24 @@ public class Libro {
 	
 	public String toString(){
 		if(this.getChapters().isEmpty()){
-			return this.getAuthorName() + "\t" + this.getName() + "\n \nNo se ingresaron capítulos" ;
+			return this.getAuthorName() + "\t" + this.getName() + "\n \nNo se ingresaron capï¿½tulos" ;
 		}else{
 			return this.getChapters().toString();
 		}
+	}
+	
+	public void printBook(){
+		System.out.print("Autor:");
+		System.out.print("\t");
+		System.out.println(this.getAuthorName());
+		System.out.print("Nombre del Libro:");
+		System.out.print("\t");
+		System.out.println(this.getName());
+		System.out.println("");
+		System.out.println("Indice del Libro");
+		System.out.println("");
+		
+		chapters.printBook();
 	}
 	
 }
