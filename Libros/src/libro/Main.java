@@ -8,36 +8,38 @@ public class Main {
         Prueba p=new Prueba();
 
         //----PRUEBASok---------------------------------------------------//
-        PruebaOK_1(s,p);
+//        PruebaOK_1(s,p);
         PruebaOK_2(s,p);
-        PruebaOK_3(s,p);
-        PruebaOK_4(s,p);
-        PruebaOK_5(s,p);
-        PruebaOK_6(s,p);
-        PruebaOK_7(s,p);
-        
-
-        //----PRUEBASerror---------------------------------------------------//
-        PruebaError_1(s,p);
-        PruebaError_2(s,p);
-        PruebaError_3(s,p);
-
-        //----Resultados---------------------------------------------------//
-        p.imprimirResultadosPrueba();
+//        PruebaOK_3(s,p);
+//        PruebaOK_4(s,p);
+//        PruebaOK_5(s,p);
+//        PruebaOK_6(s,p);
+//        PruebaOK_7(s,p);
+//        
+//
+//        //----PRUEBASerror---------------------------------------------------//
+//        PruebaError_1(s,p);
+//        PruebaError_2(s,p);
+//        PruebaError_3(s,p);
+//
+//        //----Resultados---------------------------------------------------//
+//        p.imprimirResultadosPrueba();
     }
     
     /*--------Pruebas OK ---------------------------*/
     public static void PruebaOK_1(Sistema s, Prueba p){
 
         Libro l= s.crearLibro("Horacio Quiroga", "Cuentos");
-		System.out.println("Se creó el libro");
+		System.out.println("Se creï¿½ el libro");
 
         tituloPrueba("PRUEBA OK: AGREGAR CAPITULOS");
 
-        p.ver( s.AgregarCapitulo(l, "0", "El solitario"), Sistema.Retorno.OK, "Se agregó el capítulo 1");
-        p.ver(s.AgregarCapitulo(l, "0", "La insolacion"), Sistema.Retorno.OK, "Se agregó el capítulo 2");
+        p.ver( s.AgregarCapitulo(l, "0", "El solitario"), Sistema.Retorno.OK, "Se agregï¿½ el capï¿½tulo 1");
+        p.ver(s.AgregarCapitulo(l, "0", "La insolacion"), Sistema.Retorno.OK, "Se agregï¿½ el capï¿½tulo 2");
         
-        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos");
+        
+        System.out.println("MOSTRAR INDICE!!!! WORK IN PROGRESS!!!!");
+//        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos");
 
         l=s.vaciarLibro(l);
         
@@ -50,19 +52,20 @@ public class Main {
 		
         tituloPrueba("PRUEBA OK 2: AGREGAR SUB-CAPITULOS");
 
-        p.ver(s.AgregarCapitulo(l, "0", "El solitario"), Sistema.Retorno.OK, "Se agregó el capítulo 1");
-        p.ver(s.AgregarCapitulo(l, "0", "La insolacion"), Sistema.Retorno.OK, "Se agregó el capítulo 2");
-        p.ver(s.AgregarCapitulo(l, "2", "Parte 1"), Sistema.Retorno.OK, "Se agregó el subcapítulo 2.1");
-        p.ver(s.AgregarCapitulo(l, "0", "El alambre de pua"), Sistema.Retorno.OK, "Se agregó el capítulo 3");
-        p.ver(s.AgregarCapitulo(l, "2", "Parte 2"), Sistema.Retorno.OK, "Se agregó el subcapítulo 2.2");
-		p.ver(s.AgregarCapitulo(l, "2.2", "Seccion 1"), Sistema.Retorno.OK, "Se agregó el subcapítulo 2.2.1");
-		p.ver(s.AgregarCapitulo(l, "2.2", "Seccion 2"), Sistema.Retorno.OK, "Se agregó el subcapítulo 2.2.2");
-		p.ver(s.AgregarCapitulo(l, "2", "Parte 3"), Sistema.Retorno.OK, "Se agregó el subcapítulo 2.3");
-		p.ver(s.AgregarCapitulo(l, "2.3", " Seccion 3"),Sistema.Retorno.OK, "Se agregó el subcapítulo 2.3.1");
-		p.ver(s.AgregarCapitulo(l, "2.3.1", " Nota"),Sistema.Retorno.OK, "Se agregó el subcapítulo 2.3.1");
-		p.ver(s.AgregarCapitulo(l, "2.3", " Seccion 4"),Sistema.Retorno.OK, "Se agregó el subcapítulo 2.3.1");
+        p.ver(s.AgregarCapitulo(l, "0", "El solitario"), Sistema.Retorno.OK, "Se agregï¿½ el capï¿½tulo 1");
+        p.ver(s.AgregarCapitulo(l, "0", "La insolacion"), Sistema.Retorno.OK, "Se agregï¿½ el capï¿½tulo 2");
+        p.ver(s.AgregarCapitulo(l, "2", "Parte 1"), Sistema.Retorno.OK, "Se agregï¿½ el subcapï¿½tulo 2.1");
+        p.ver(s.AgregarCapitulo(l, "0", "El alambre de pua"), Sistema.Retorno.OK, "Se agregï¿½ el capï¿½tulo 3");
+        p.ver(s.AgregarCapitulo(l, "2", "Parte 2"), Sistema.Retorno.OK, "Se agregï¿½ el subcapï¿½tulo 2.2");
+		p.ver(s.AgregarCapitulo(l, "2.2", "Seccion 1"), Sistema.Retorno.OK, "Se agregï¿½ el subcapï¿½tulo 2.2.1");
+		p.ver(s.AgregarCapitulo(l, "2.2", "Seccion 2"), Sistema.Retorno.OK, "Se agregï¿½ el subcapï¿½tulo 2.2.2");
+		p.ver(s.AgregarCapitulo(l, "2", "Parte 3"), Sistema.Retorno.OK, "Se agregï¿½ el subcapï¿½tulo 2.3");
+		p.ver(s.AgregarCapitulo(l, "2.3", " Seccion 3"),Sistema.Retorno.OK, "Se agregï¿½ el subcapï¿½tulo 2.3.1");
+		p.ver(s.AgregarCapitulo(l, "2.3.1", " Nota"),Sistema.Retorno.OK, "Se agregï¿½ el subcapï¿½tulo 2.3.1");
+		p.ver(s.AgregarCapitulo(l, "2.3", " Seccion 4"),Sistema.Retorno.OK, "Se agregï¿½ el subcapï¿½tulo 2.3.1");
         
-        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos");
+//		System.out.println("MOSTRAR INDICE!!!! WORK IN PROGRESS!!!!");
+        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos");
         
         l=s.vaciarLibro(l);
 
@@ -80,9 +83,11 @@ public class Main {
         //Muestra estructura antes de eliminar
         s.MostrarIndice(l);
         //Elimina
-        p.ver(s.BorrarCapitulo(l, "2.2.1"),Sistema.Retorno.OK,"Se eliminó el subcapítulo 2.2.1");
-        //Muestra estructura después de eliminar
-        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos");
+        p.ver(s.BorrarCapitulo(l, "2.2.1"),Sistema.Retorno.OK,"Se eliminï¿½ el subcapï¿½tulo 2.2.1");
+        //Muestra estructura despuï¿½s de eliminar
+        
+        System.out.println("MOSTRAR INDICE!!!! WORK IN PROGRESS!!!!");
+//        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos");
 
         l=s.vaciarLibro(l);
 
@@ -100,9 +105,11 @@ public class Main {
         //Muestra estructura antes de borrar
         s.MostrarIndice(l);
         //Elimina
-        p.ver(s.BorrarCapitulo(l, "2"),Sistema.Retorno.OK,"Se eliminó el capítulo 2");
-        //Muestra estructura después de eliminar
-        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos");
+        p.ver(s.BorrarCapitulo(l, "2"),Sistema.Retorno.OK,"Se eliminï¿½ el capï¿½tulo 2");
+        //Muestra estructura despuï¿½s de eliminar
+        
+        System.out.println("MOSTRAR INDICE!!!! WORK IN PROGRESS!!!!");
+//        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos");
 
         l=s.vaciarLibro(l);
 
@@ -118,9 +125,11 @@ public class Main {
         tituloPrueba("PRUEBA OK 5: MOSTRAR NIVELES");
 
         //Muestra estructura completa
-        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos");
         
-        p.ver(s.MostrarIndiceNiveles(l, 2, 3),Sistema.Retorno.OK,"Se mostraron niveles 2 y 3 de capítulos");
+        System.out.println("MOSTRAR INDICE!!!! WORK IN PROGRESS!!!!");
+//        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos");
+        
+        p.ver(s.MostrarIndiceNiveles(l, 2, 3),Sistema.Retorno.OK,"Se mostraron niveles 2 y 3 de capï¿½tulos");
                
         l=s.vaciarLibro(l);
 
@@ -136,15 +145,17 @@ public class Main {
         tituloPrueba("PRUEBA OK 6: AGREGAR PALABRAS CLAVE");
 
         //Muestra estructura completa
-        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos");
+        
+        System.out.println("MOSTRAR INDICE!!!! WORK IN PROGRESS!!!!");
+//        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos");
 
-        p.ver(s.AgregarPalabraClave(l, "1", "camino"),Sistema.Retorno.OK,"Se agregó palabra clave *camino* al capítulo 1");
-        p.ver(s.AgregarPalabraClave(l, "2", "CABALLO"),Sistema.Retorno.OK,"Se agregó palabra clave *CABALLO* al capítulo 2");
-        p.ver(s.AgregarPalabraClave(l, "2.1", "caballo"),Sistema.Retorno.OK,"Se agregó palabra clave *caballo* al capítulo 2.1");
+        p.ver(s.AgregarPalabraClave(l, "1", "camino"),Sistema.Retorno.OK,"Se agregï¿½ palabra clave *camino* al capï¿½tulo 1");
+        p.ver(s.AgregarPalabraClave(l, "2", "CABALLO"),Sistema.Retorno.OK,"Se agregï¿½ palabra clave *CABALLO* al capï¿½tulo 2");
+        p.ver(s.AgregarPalabraClave(l, "2.1", "caballo"),Sistema.Retorno.OK,"Se agregï¿½ palabra clave *caballo* al capï¿½tulo 2.1");
 
-        p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos con palabras clave");
+        p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos con palabras clave");
 
-        p.ver(s.MostrarCapitulosConClave(l, "caballo"),Sistema.Retorno.OK, "Se mostraron capítulos con la palabra clave *caballo*");
+        p.ver(s.MostrarCapitulosConClave(l, "caballo"),Sistema.Retorno.OK, "Se mostraron capï¿½tulos con la palabra clave *caballo*");
 
        l=s.vaciarLibro(l);
 
@@ -164,11 +175,11 @@ public class Main {
         s.AgregarPalabraClave(l, "2", "CABALLO");
         s.AgregarPalabraClave(l, "2.1", "caballo");
 
-        p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos con palabras clave");
+        p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos con palabras clave");
 
-        p.ver(s.BorrarPalabraClave(l, "1","CAMINO"),Sistema.Retorno.OK, "Se eliminó la palabra clave *CAMINO* del capítulo 1");
+        p.ver(s.BorrarPalabraClave(l, "1","CAMINO"),Sistema.Retorno.OK, "Se eliminï¿½ la palabra clave *CAMINO* del capï¿½tulo 1");
 
-        p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos con palabras clave");
+        p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos con palabras clave");
 
         l=s.vaciarLibro(l);
 
@@ -183,10 +194,10 @@ public class Main {
 
         tituloPrueba("PRUEBA ERROR 1: AGREGAR CAPITULOS REPETIDOS");
 
-        p.ver( s.AgregarCapitulo(l, "0", "El solitario"), Sistema.Retorno.OK, "Se agregó el capítulo 1");
-        p.ver(s.AgregarCapitulo(l, "0", "El solitario"), Sistema.Retorno.ERROR, "Error: El capítulo *El solitario* ya existe");
-        p.ver(s.AgregarCapitulo(l, "0", "La insolacion"), Sistema.Retorno.OK, "Se agregó el capítulo 2");
-        p.ver(s.AgregarCapitulo(l, "0", "La insolacion"), Sistema.Retorno.ERROR,  "Error: El capítulo *La insolación* ya existe");
+        p.ver( s.AgregarCapitulo(l, "0", "El solitario"), Sistema.Retorno.OK, "Se agregï¿½ el capï¿½tulo 1");
+        p.ver(s.AgregarCapitulo(l, "0", "El solitario"), Sistema.Retorno.ERROR, "Error: El capï¿½tulo *El solitario* ya existe");
+        p.ver(s.AgregarCapitulo(l, "0", "La insolacion"), Sistema.Retorno.OK, "Se agregï¿½ el capï¿½tulo 2");
+        p.ver(s.AgregarCapitulo(l, "0", "La insolacion"), Sistema.Retorno.ERROR,  "Error: El capï¿½tulo *La insolaciï¿½n* ya existe");
         s.MostrarIndice(l);
         
         l=s.vaciarLibro(l);
@@ -200,13 +211,15 @@ public class Main {
         Libro l= s.crearLibro("Horacio Quiroga", "Cuentos");
         CargaCapitulos(s,l);
 
-        tituloPrueba("PRUEBA ERROR 2: ELIMINAR CAPÍTULO QUE NO EXISTE");
+        tituloPrueba("PRUEBA ERROR 2: ELIMINAR CAPï¿½TULO QUE NO EXISTE");
         
-        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos");
+        System.out.println("MOSTRAR INDICE!!!! WORK IN PROGRESS!!!!");
+//        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos");
 
-        p.ver(s.BorrarCapitulo(l, "8"),Sistema.Retorno.ERROR, "Error: No existe capítulo 8 en el libro");
+        p.ver(s.BorrarCapitulo(l, "8"),Sistema.Retorno.ERROR, "Error: No existe capï¿½tulo 8 en el libro");
 
-        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos");
+        System.out.println("MOSTRAR INDICE!!!! WORK IN PROGRESS!!!!");
+//        p.ver(s.MostrarIndice(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos");
 
         l=s.vaciarLibro(l);
         finPrueba("Fin PRUEBA ERROR 2");
@@ -224,11 +237,11 @@ public class Main {
         s.AgregarPalabraClave(l, "2", "CABALLO");
         s.AgregarPalabraClave(l, "2.1", "caballo");
 
-        p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos con palabras clave");
+        p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos con palabras clave");
 
-        p.ver(s.BorrarPalabraClave(l, "3","CAMINO"),Sistema.Retorno.ERROR, "Error: El capítulo 3 no tiene palabra clave *CAMINO*");
+        p.ver(s.BorrarPalabraClave(l, "3","CAMINO"),Sistema.Retorno.ERROR, "Error: El capï¿½tulo 3 no tiene palabra clave *CAMINO*");
 
-        p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostró el índice de capítulos con palabras clave");
+        p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostrï¿½ el ï¿½ndice de capï¿½tulos con palabras clave");
 
         l=s.vaciarLibro(l);
 
@@ -236,7 +249,7 @@ public class Main {
     }
     /*------------------------------------------------------------------*/
     public static void CargaCapitulos(Sistema s, Libro l){
-        //Crea la estructura de capítulos
+        //Crea la estructura de capï¿½tulos
         s.AgregarCapitulo(l, "0", "El solitario");
         s.AgregarCapitulo(l, "0", "La insolacion");
         s.AgregarCapitulo(l, "2", "Parte 1");

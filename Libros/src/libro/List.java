@@ -48,8 +48,7 @@ public class List {
 	}
 
 	/**
-	 * Retorna un elemento del tipo nodeList que corresponda al id recibido por
-	 * parametro
+	 * Retorna un elemento del tipo nodeList que corresponda al id recibido por parametro
 	 * 
 	 * @param id
 	 *            id buscado
@@ -60,7 +59,7 @@ public class List {
 	 * @return nodeList
 	 */
 	public NodeList getNodeById(String id, NodeList node, String IdCount) {
-		NodeList aux = null ;
+		NodeList aux = null;
 		int ref = 0;
 		while (node != null) {
 			ref++;
@@ -70,8 +69,7 @@ public class List {
 				return node;
 			} else {
 				if (!node.getChilds().isEmpty()) {
-					aux = getNodeById(id, node.getChilds().getFirst(), newId
-							+ ".");
+					aux = getNodeById(id, node.getChilds().getFirst(), newId + ".");
 				}
 				node = node.getNext();
 			}
@@ -123,6 +121,46 @@ public class List {
 			return result;
 		}
 		return "";
+	}
+
+	public void printBook() {
+		NodeList libro = this.first;
+		
+		int id = 1;
+
+		String idStr = id + "";
+		while (libro != null) {
+
+			System.out.print(id);
+			System.out.println("\t\t\t" + libro.getName());
+
+			if (!libro.getChilds().isEmpty()) {
+				int contador = 1;
+				NodeList capitulos = libro.getChilds().getFirst();
+				this.printChildrens(capitulos, idStr, contador);
+			}
+			id = id + 1;
+			idStr = id + "";
+			libro = libro.getNext();
+		}
+	}
+	
+	public void printChildrens(NodeList capitulos, String id, int contador) {
+
+		while (capitulos != null) {
+			System.out.println(id + "." + contador + "\t\t\t" + capitulos.getName());
+
+			if (!capitulos.getChilds().isEmpty()) {
+				NodeList subCapitulos = capitulos.getChilds().getFirst();
+
+				String idCompleto = id + "." + contador;
+				int nuevo = 1;
+				printChildrens(subCapitulos, idCompleto, nuevo);
+
+			}
+			contador++;
+			capitulos = capitulos.getNext();
+		}
 	}
 
 }
