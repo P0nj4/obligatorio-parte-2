@@ -84,4 +84,8 @@ public class Libro {
 		chapters.printBook();
 	}
 	
+	public boolean DeleteKeyword(String id, String word){
+		return this.getChapters().DeleteKeyword(id, word);
+	}
+	
 }

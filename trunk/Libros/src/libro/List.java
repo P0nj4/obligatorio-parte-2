@@ -107,7 +107,7 @@ public class List {
 				String newId = IdCount + ref + "";
 				if (level >= start && level <= end) {
 					res.append("\n " + newId + " " + aux.getName()); // += "\n "
-																		// +
+					// +
 					// newId +
 					// aux.getName();
 					if (!aux.getChilds().isEmpty()) {
@@ -194,7 +194,7 @@ public class List {
 	 * @param IdCount
 	 *            - String - Se debe pasar un string vacio, es decir ""
 	 * @param res
-	 *            - String 
+	 *            - String
 	 * @return Boolean
 	 */
 	public void toStringWithKeywords(String IdCount, StringBuffer res) {
@@ -215,4 +215,12 @@ public class List {
 
 	}
 
+	public boolean DeleteKeyword(String id, String word) {
+		boolean result = false;
+		NodeList wanted = this.getNodeById(id, this.getFirst(), "");
+		if (wanted != null) {
+			result = wanted.getKeywordList().DeleteKeyword(word);
+		}
+		return result;
+	}
 }
