@@ -44,7 +44,11 @@ public class Sistema {
 	}
 
 	public Retorno BorrarPalabraClave(Libro l, String nroCapitulo, String clave) {
-		return Retorno.NO_IMPLEMENTADA;
+		if (l.DeleteKeyword(nroCapitulo, clave)) {
+			return Retorno.OK;
+		} else {
+			return Retorno.ERROR;
+		}
 	}
 
 	public Retorno MostrarIndiceConClaves(Libro l) {

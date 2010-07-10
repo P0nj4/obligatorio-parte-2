@@ -19,26 +19,47 @@ public class KeywordList {
 		}
 	}
 
-	public void AddAtLast(String keyword){
+	public void AddAtLast(String keyword) {
 		KeywordNode newone = new KeywordNode(keyword);
-		if(this.isEmpty()){
+		if (this.isEmpty()) {
 			this.setFirst(newone);
-		}else{
+		} else {
 			KeywordNode aux = this.getFirst();
-			while(aux.getNext() != null){
+			while (aux.getNext() != null) {
 				aux = aux.getNext();
 			}
 			aux.setNext(newone);
 		}
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		KeywordNode aux = this.getFirst();
-		String AllNodes="";
-		while(aux != null){
-			AllNodes += aux.getKeyword() + " ";	
+		String AllNodes = "";
+		while (aux != null) {
+			AllNodes += aux.getKeyword() + " ";
 			aux = aux.getNext();
 		}
 		return AllNodes;
+	}
+
+	public boolean DeleteKeyword(String word) {
+		boolean found=false;
+		if (this.isEmpty()) {
+			found=false;
+		} else {
+			KeywordNode node = this.getFirst();			
+			while (node!= null && node.getNext() != null) {
+				if(node.getNext().getKeyword().toLowerCase().equals(word.toLowerCase())){
+					node.setNext(node.getNext().getNext());
+					found=true;
+				}
+				node = node.getNext();
+			}
+			if(first.getKeyword().toLowerCase().equals(word.toLowerCase())){
+				first= first.getNext();
+				found=true;
+			}
+		}
+		return found;
 	}
 }

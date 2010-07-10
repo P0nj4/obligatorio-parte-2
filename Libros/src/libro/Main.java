@@ -13,8 +13,8 @@ public class Main {
 //        PruebaOK_3(s,p);
 //        PruebaOK_4(s,p);
 //        PruebaOK_5(s,p);
-        PruebaOK_6(s,p);
-//        PruebaOK_7(s,p);
+//        PruebaOK_6(s,p);
+        PruebaOK_7(s,p);
 //        
 //
 //        //----PRUEBASerror---------------------------------------------------//
@@ -176,11 +176,13 @@ public class Main {
         //Agrega claves
         s.AgregarPalabraClave(l, "1", "camino");
         s.AgregarPalabraClave(l, "2", "CABALLO");
+        s.AgregarPalabraClave(l, "2", "pepe");
+        s.AgregarPalabraClave(l, "2", "CABallo");
         s.AgregarPalabraClave(l, "2.1", "caballo");
 
         p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostr� el �ndice de cap�tulos con palabras clave");
 
-        p.ver(s.BorrarPalabraClave(l, "1","CAMINO"),Sistema.Retorno.OK, "Se elimin� la palabra clave *CAMINO* del cap�tulo 1");
+        p.ver(s.BorrarPalabraClave(l, "2","CABALLO"),Sistema.Retorno.OK, "Se elimin� la palabra clave *CAMINO* del cap�tulo 1");
 
         p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostr� el �ndice de cap�tulos con palabras clave");
 
