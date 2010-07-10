@@ -24,6 +24,7 @@ public class Sistema {
 	}
 
 	public Retorno BorrarCapitulo(Libro l, String nroCapitulo) {
+		l.chapterDelete(nroCapitulo);
 		return Retorno.NO_IMPLEMENTADA;
 	}
 
@@ -59,7 +60,12 @@ public class Sistema {
 	}
 
 	public Retorno MostrarCapitulosConClave(Libro l, String clave) {
-		return Retorno.NO_IMPLEMENTADA;
+		if (l.showChaptersWithKey(clave)) {
+			return Retorno.OK;
+		} else {
+			return Retorno.ERROR;
+		}
+
 	}
 
 }
