@@ -223,4 +223,25 @@ public class List {
 		}
 		return result;
 	}
+	
+	
+	/** Retorna el nodo que tenga mismo nombre al recibido por parametro**/
+	public NodeList getNodeByName(String name){
+		return this.getNodeByName(name, this.getFirst());
+	}
+	private NodeList getNodeByName(String name, NodeList node){
+		NodeList aux = node;
+		while(aux != null){
+			if(aux.getName().equals(name)){
+				return aux;
+			}else{
+				if(!aux.getChilds().isEmpty()){
+					return getNodeByName(name, node.getChilds().getFirst());
+				}
+			}			
+			aux= aux.getNext();
+		}
+		return null;
+	}
+	
 }

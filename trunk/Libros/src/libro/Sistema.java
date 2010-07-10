@@ -7,7 +7,6 @@ public class Sistema {
 	};
 
 	public Libro crearLibro(String nomAutor, String nomTitulo) {
-
 		return new Libro(nomAutor, nomTitulo);
 	}
 
@@ -17,8 +16,11 @@ public class Sistema {
 	}
 
 	public Retorno AgregarCapitulo(Libro l, String nroPadre, String descripcion) {
-		l.addChapter(descripcion, nroPadre);
-		return Retorno.OK;
+		if (l.addChapter(descripcion, nroPadre)) {
+			return Retorno.OK;
+		} else {
+			return Retorno.OK;
+		}
 	}
 
 	public Retorno BorrarCapitulo(Libro l, String nroCapitulo) {
