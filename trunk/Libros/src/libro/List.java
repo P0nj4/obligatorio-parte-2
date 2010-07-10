@@ -98,8 +98,6 @@ public class List {
 		}
 	}
 
-	// private static String result = new String();
-
 	public void toString(String IdCount, StringBuffer res, int level, int start, int end) {
 		if (!this.isEmpty()) {
 			NodeList aux = this.first;
@@ -108,7 +106,8 @@ public class List {
 				ref++;
 				String newId = IdCount + ref + "";
 				if (level >= start && level <= end) {
-					res.append("\n " + newId + aux.getName()); // += "\n " +
+					res.append("\n " + newId + " " + aux.getName()); // += "\n "
+																		// +
 					// newId +
 					// aux.getName();
 					if (!aux.getChilds().isEmpty()) {
@@ -162,15 +161,18 @@ public class List {
 			capitulos = capitulos.getNext();
 		}
 	}
-	
-	
+
 	/**
-	 * Llama a la funcion getNodeById para obtener el nodo buscado, una vez que lo encuentra le pide al nodo que se agregue la palabra clave
-	 * Retorna true si existe un nodo con el id recibido por parametro y pudo agregar la palabra clave, en caso contrario retorna false
-	 * @param word - String - 
-	 *            Palabra clave
-	 * @param id - String -  
-	 *            id del nodo al que se le desea agregar la palabra clave
+	 * Llama a la funcion getNodeById para obtener el nodo buscado, una vez que
+	 * lo encuentra le pide al nodo que se agregue la palabra clave Retorna true
+	 * si existe un nodo con el id recibido por parametro y pudo agregar la
+	 * palabra clave, en caso contrario retorna false
+	 * 
+	 * @param word
+	 *            - String - Palabra clave
+	 * @param id
+	 *            - String - id del nodo al que se le desea agregar la palabra
+	 *            clave
 	 * 
 	 * @return Boolean
 	 */
@@ -181,6 +183,36 @@ public class List {
 			return true;
 		} else {
 			return false;
-		}		
+		}
 	}
+
+	/**
+	 * Dado un id recorre todos los hijos y hermanos del nodo y agrega el nombre
+	 * y sus palabras claves correspondientes a un string, para posteriormente
+	 * devolverlo
+	 * 
+	 * @param IdCount
+	 *            - String - Se debe pasar un string vacio, es decir ""
+	 * @param res
+	 *            - String 
+	 * @return Boolean
+	 */
+	public void toStringWithKeywords(String IdCount, StringBuffer res) {
+		if (!this.isEmpty()) {
+			NodeList aux = this.first;
+			int ref = 0;
+			while (aux != null) {
+				ref++;
+				String newId = IdCount + ref + "";
+				res.append("\n " + newId + " " + aux.getName() + aux.getKewywordToString());
+				if (!aux.getChilds().isEmpty()) {
+					aux.getChilds().toStringWithKeywords(newId + ".", res);
+				}
+				aux = aux.getNext();
+			}
+
+		}
+
+	}
+
 }

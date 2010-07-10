@@ -30,17 +30,15 @@ public class Sistema {
 		return Retorno.OK;
 	}
 
-	
-
 	public Retorno MostrarIndiceNiveles(Libro l, int nivelDesde, int nivelHasta) {
-		l.toString(nivelDesde, nivelHasta);
+		System.out.println(l.toString(nivelDesde, nivelHasta));
 		return Retorno.OK;
 	}
 
 	public Retorno AgregarPalabraClave(Libro l, String nroCapitulo, String clave) {
-		if(l.AddKeyword(clave , nroCapitulo)){
+		if (l.AddKeyword(clave, nroCapitulo)) {
 			return Retorno.OK;
-		}else{
+		} else {
 			return Retorno.ERROR;
 		}
 	}
@@ -50,7 +48,8 @@ public class Sistema {
 	}
 
 	public Retorno MostrarIndiceConClaves(Libro l) {
-		return Retorno.NO_IMPLEMENTADA;
+		System.out.println(l.toStringWithKeyWords());
+		return Retorno.OK;
 	}
 
 	public Retorno MostrarCapitulosConClave(Libro l, String clave) {

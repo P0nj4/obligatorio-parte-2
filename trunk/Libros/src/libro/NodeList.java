@@ -58,4 +58,8 @@ public class NodeList {
 		this.getKeywordList().AddAtLast(word);
 	}
 
+	public String getKewywordToString() {
+		return ": " + this.getKeywordList().toString();
+	}
+
 }

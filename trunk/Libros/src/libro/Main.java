@@ -9,11 +9,11 @@ public class Main {
 
         //----PRUEBASok---------------------------------------------------//
 //        PruebaOK_1(s,p);
-        PruebaOK_2(s,p);
+//        PruebaOK_2(s,p);
 //        PruebaOK_3(s,p);
 //        PruebaOK_4(s,p);
 //        PruebaOK_5(s,p);
-//        PruebaOK_6(s,p);
+        PruebaOK_6(s,p);
 //        PruebaOK_7(s,p);
 //        
 //
@@ -152,7 +152,10 @@ public class Main {
         p.ver(s.AgregarPalabraClave(l, "1", "camino"),Sistema.Retorno.OK,"Se agreg� palabra clave *camino* al cap�tulo 1");
         p.ver(s.AgregarPalabraClave(l, "2", "CABALLO"),Sistema.Retorno.OK,"Se agreg� palabra clave *CABALLO* al cap�tulo 2");
         p.ver(s.AgregarPalabraClave(l, "2.1", "caballo"),Sistema.Retorno.OK,"Se agreg� palabra clave *caballo* al cap�tulo 2.1");
+        p.ver(s.AgregarPalabraClave(l, "2.1", "Sol"),Sistema.Retorno.OK,"Se agreg� palabra clave *caballo* al cap�tulo 2.1");
+        p.ver(s.AgregarPalabraClave(l, "2.1.1", "SolSec"),Sistema.Retorno.OK,"Se agreg� palabra clave *caballo* al cap�tulo 2.1");
 
+        
         p.ver(s.MostrarIndiceConClaves(l),Sistema.Retorno.OK, "Se mostr� el �ndice de cap�tulos con palabras clave");
 
         p.ver(s.MostrarCapitulosConClave(l, "caballo"),Sistema.Retorno.OK, "Se mostraron cap�tulos con la palabra clave *caballo*");
