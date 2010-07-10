@@ -21,29 +21,15 @@ public class List {
 
 	public void addAtLast(String NodeName) {
 		if (this.isEmpty()) {
-			NodeList newNode = new NodeList(1, NodeName);
+			NodeList newNode = new NodeList(NodeName);
 			this.first = newNode;
 		} else {
 			NodeList aux = this.first;
 			while (aux.getNext() != null) {
 				aux = aux.getNext();
 			}
-			NodeList newNode = new NodeList(childCount() + 1, NodeName);
+			NodeList newNode = new NodeList(NodeName);
 			aux.setNext(newNode);
-		}
-	}
-
-	public int childCount() {
-		if (this.isEmpty()) {
-			return 0;
-		} else {
-			NodeList aux = this.first;
-			int counter = 0;
-			while (aux != null) {
-				counter++;
-				aux = aux.getNext();
-			}
-			return counter;
 		}
 	}
 
