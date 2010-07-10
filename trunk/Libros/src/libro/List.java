@@ -58,7 +58,11 @@ public class List {
 				if (!node.getChilds().isEmpty()) {
 					aux = getNodeById(id, node.getChilds().getFirst(), newId + ".");
 				}
-				node = node.getNext();
+				if (aux != null) {
+					node = null;
+				} else {
+					node = node.getNext();
+				}
 			}
 		}
 		return aux;
