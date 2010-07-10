@@ -58,6 +58,17 @@ public class Libro {
 	public boolean AddKeyword(String word, String id){
 		return this.chapters.addKeyword(word,id);
 	}
+	
+	public String toStringWithKeyWords(){
+		
+		StringBuffer s = new StringBuffer();
+		this.getChapters().toStringWithKeywords("",s);
+		if(s.toString().equals("")){
+			return this.getAuthorName() + "\t" + this.getName() + "\n \nNo se ingresaron capitulos" ;
+		}else{		
+			return s.toString();
+		}
+	}
 				
 	public void printBook(){
 		System.out.print("Autor:");

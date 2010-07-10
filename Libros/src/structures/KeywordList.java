@@ -31,4 +31,14 @@ public class KeywordList {
 			aux.setNext(newone);
 		}
 	}
+	
+	public String toString(){
+		KeywordNode aux = this.getFirst();
+		String AllNodes="";
+		while(aux != null){
+			AllNodes += aux.getKeyword() + " ";	
+			aux = aux.getNext();
+		}
+		return AllNodes;
+	}
 }
