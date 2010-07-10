@@ -1,11 +1,19 @@
 package libro;
 
+import structures.KeywordList;
+
 public class NodeList {
 	private String name;
 	private NodeList next;
 	private List childs;
+	private KeywordList keywordList;
 	
-	
+	public KeywordList getKeywordList() {
+		return keywordList;
+	}
+	public void setKeywordList(KeywordList keywordList) {
+		this.keywordList = keywordList;
+	}
 	public List getChilds() {
 		return childs;
 	}
