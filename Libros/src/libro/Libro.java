@@ -102,4 +102,15 @@ public class Libro {
 		return this.getChapters().DeleteKeyword(id, word);
 	}
 
+	public boolean chapterDelete(String nroCapitulo) {
+		boolean resultado = false;
+		return resultado;
+	}
+	
+	
+	public boolean showChaptersWithKey(String key){
+		boolean resultado = false;
+		this.chapters.showChaptersWithKey(key);
+		return resultado;
+	}
 }

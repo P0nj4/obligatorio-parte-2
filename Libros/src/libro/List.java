@@ -1,5 +1,7 @@
 package libro;
 
+import structures.KeywordNode;
+
 public class List {
 	private NodeList first;
 
@@ -34,8 +36,7 @@ public class List {
 	}
 
 	/**
-	 * Retorna un elemento del tipo nodeList que corresponda al id recibido por
-	 * parametro
+	 * Retorna un elemento del tipo nodeList que corresponda al id recibido por parametro
 	 * 
 	 * @param id
 	 *            id buscado
@@ -106,10 +107,7 @@ public class List {
 				ref++;
 				String newId = IdCount + ref + "";
 				if (level >= start && level <= end) {
-					res.append("\n " + newId + " " + aux.getName()); // += "\n "
-					// +
-					// newId +
-					// aux.getName();
+					res.append("\n " + newId + " " + aux.getName());
 					if (!aux.getChilds().isEmpty()) {
 						aux.getChilds().toString(newId + ".", res, level + 1, start, end);
 					}
@@ -163,16 +161,14 @@ public class List {
 	}
 
 	/**
-	 * Llama a la funcion getNodeById para obtener el nodo buscado, una vez que
-	 * lo encuentra le pide al nodo que se agregue la palabra clave Retorna true
-	 * si existe un nodo con el id recibido por parametro y pudo agregar la
-	 * palabra clave, en caso contrario retorna false
+	 * Llama a la funcion getNodeById para obtener el nodo buscado, una vez que lo encuentra le pide al nodo
+	 * que se agregue la palabra clave Retorna true si existe un nodo con el id recibido por parametro y pudo
+	 * agregar la palabra clave, en caso contrario retorna false
 	 * 
 	 * @param word
 	 *            - String - Palabra clave
 	 * @param id
-	 *            - String - id del nodo al que se le desea agregar la palabra
-	 *            clave
+	 *            - String - id del nodo al que se le desea agregar la palabra clave
 	 * 
 	 * @return Boolean
 	 */
@@ -187,9 +183,8 @@ public class List {
 	}
 
 	/**
-	 * Dado un id recorre todos los hijos y hermanos del nodo y agrega el nombre
-	 * y sus palabras claves correspondientes a un string, para posteriormente
-	 * devolverlo
+	 * Dado un id recorre todos los hijos y hermanos del nodo y agrega el nombre y sus palabras claves
+	 * correspondientes a un string, para posteriormente devolverlo
 	 * 
 	 * @param IdCount
 	 *            - String - Se debe pasar un string vacio, es decir ""
@@ -223,25 +218,104 @@ public class List {
 		}
 		return result;
 	}
-	
-	
-	/** Retorna el nodo que tenga mismo nombre al recibido por parametro**/
-	public NodeList getNodeByName(String name){
+
+	/** Retorna el nodo que tenga mismo nombre al recibido por parametro **/
+	public NodeList getNodeByName(String name) {
 		return this.getNodeByName(name, this.getFirst());
 	}
-	private NodeList getNodeByName(String name, NodeList node){
+
+	private NodeList getNodeByName(String name, NodeList node) {
 		NodeList aux = node;
-		while(aux != null){
-			if(aux.getName().equals(name)){
+		while (aux != null) {
+			if (aux.getName().equals(name)) {
 				return aux;
-			}else{
-				if(!aux.getChilds().isEmpty()){
+			} else {
+				if (!aux.getChilds().isEmpty()) {
 					return getNodeByName(name, node.getChilds().getFirst());
 				}
-			}			
-			aux= aux.getNext();
+			}
+			aux = aux.getNext();
 		}
 		return null;
 	}
-	
+
+	public boolean showChaptersWithKey(String key) {
+		boolean resultado = false;
+
+		NodeList libro = this.first;
+
+		int id = 1;
+		String idStr = id + "";
+		while (libro != null) {
+
+			KeywordNode keyList = libro.getKeywordList().getFirst();
+			if (keyList != null) {
+				while (keyList != null) {
+
+					if (keyList.getKeyword() != null && keyList.getKeyword().toLowerCase().equals(key.toLowerCase())) {
+
+						System.out.print(id);
+						System.out.println("\t\t\t" + libro.getName() + " : " + key);
+
+						if (!libro.getChilds().isEmpty()) {
+							int contador = 1;
+							NodeList capitulos = libro.getChilds().getFirst();
+							this.showChildrensChapterWhithKey(capitulos, idStr, contador, key, resultado);
+							keyList = keyList.getNext();
+						}
+					} else {
+						keyList = keyList.getNext();
+					}
+				}
+			}
+			id = id + 1;
+			idStr = id + "";
+			libro = libro.getNext();
+		}
+		return resultado;
+	}
+
+	public void showChildrensChapterWhithKey(NodeList capitulos, String id, int contador, String key, boolean resultado) {
+
+		while (capitulos != null) {
+
+			KeywordNode keyList = capitulos.getKeywordList().getFirst();
+			if (keyList != null) {
+				while (keyList != null) {
+					if (keyList.getKeyword() != null) {
+						if (keyList.getKeyword().toLowerCase().equals(key.toLowerCase())) {
+
+							System.out.println(id + "." + contador + "\t\t\t" + capitulos.getName() + " : " + key);
+							resultado = true;
+
+							if (!capitulos.getChilds().isEmpty()) {
+								NodeList subCapitulos = capitulos.getChilds().getFirst();
+
+								String idCompleto = id + "." + contador;
+								int nuevo = 1;
+								showChildrensChapterWhithKey(subCapitulos, idCompleto, nuevo, key, resultado);
+							}
+						}
+						keyList = keyList.getNext();
+					} else {
+						contador++;
+						capitulos = capitulos.getNext();
+					}
+				}
+				contador++;
+				capitulos = capitulos.getNext();
+
+			} else {
+				if (!capitulos.getChilds().isEmpty()) {
+					NodeList subCapitulos = capitulos.getChilds().getFirst();
+
+					String idCompleto = id + "." + contador;
+					int nuevo = 1;
+					showChildrensChapterWhithKey(subCapitulos, idCompleto, nuevo, key, resultado);
+				}
+				contador++;
+				capitulos = capitulos.getNext();
+			}
+		}
+	}
 }
