@@ -56,8 +56,7 @@ public class Libro {
 	}
 	
 	public boolean AddKeyword(String word, String id){
-		
-		return false;
+		return this.chapters.addKeyword(word,id);
 	}
 				
 	public void printBook(){

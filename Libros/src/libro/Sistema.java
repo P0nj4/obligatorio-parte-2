@@ -38,7 +38,11 @@ public class Sistema {
 	}
 
 	public Retorno AgregarPalabraClave(Libro l, String nroCapitulo, String clave) {
-		return Retorno.NO_IMPLEMENTADA;
+		if(l.AddKeyword(clave , nroCapitulo)){
+			return Retorno.OK;
+		}else{
+			return Retorno.ERROR;
+		}
 	}
 
 	public Retorno BorrarPalabraClave(Libro l, String nroCapitulo, String clave) {
