@@ -162,5 +162,25 @@ public class List {
 			capitulos = capitulos.getNext();
 		}
 	}
-
+	
+	
+	/**
+	 * Llama a la funcion getNodeById para obtener el nodo buscado, una vez que lo encuentra le pide al nodo que se agregue la palabra clave
+	 * Retorna true si existe un nodo con el id recibido por parametro y pudo agregar la palabra clave, en caso contrario retorna false
+	 * @param word - String - 
+	 *            Palabra clave
+	 * @param id - String -  
+	 *            id del nodo al que se le desea agregar la palabra clave
+	 * 
+	 * @return Boolean
+	 */
+	public boolean addKeyword(String word, String id) {
+		NodeList node = this.getNodeById(id, this.getFirst(), "");
+		if (node != null) {
+			node.addKeyword(word);
+			return true;
+		} else {
+			return false;
+		}		
+	}
 }
