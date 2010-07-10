@@ -55,6 +55,11 @@ public class Libro {
 		}
 	}
 	
+	public boolean AddKeyword(String word, String id){
+		
+		return false;
+	}
+				
 	public void printBook(){
 		System.out.print("Autor:");
 		System.out.print("\t");
