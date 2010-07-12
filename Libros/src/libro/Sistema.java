@@ -24,8 +24,11 @@ public class Sistema {
 	}
 
 	public Retorno BorrarCapitulo(Libro l, String nroCapitulo) {
-		l.chapterDelete(nroCapitulo);
-		return Retorno.OK;
+		if (l.chapterDelete(nroCapitulo)) {
+			return Retorno.OK;
+		} else {
+			return Retorno.ERROR;
+		}
 	}
 
 	public Retorno MostrarIndice(Libro l) {
