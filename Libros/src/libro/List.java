@@ -306,7 +306,7 @@ public class List {
 		}
 	}
 
-	public boolean chapterDelete(String nroCapitulo, String[] vecNroCap, int tamañoVec) {
+	public boolean chapterDelete(String nroCapitulo, String[] vecNroCap, int tamanio) {
 		boolean resultado = false;
 
 		NodeList primero = this.getFirst().getNext();
@@ -315,7 +315,7 @@ public class List {
 			this.setFirst(primero);
 		}else{
 			
-			if (tamañoVec == 0){
+			if (tamanio == 0){
 				int contador=2;
 				 while (primero.getNext() != null && nroCapitulo.equals(contador)){
 					 primero = primero.getNext();
