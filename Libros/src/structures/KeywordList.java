@@ -34,12 +34,12 @@ public class KeywordList {
 
 	public String toString() {
 		KeywordNode aux = this.getFirst();
-		String AllNodes = "";
+		String allNodes = "";
 		while (aux != null) {
-			AllNodes += aux.getKeyword() + " ";
+			allNodes += aux.getKeyword() + " ";
 			aux = aux.getNext();
 		}
-		return AllNodes;
+		return allNodes;
 	}
 
 	public boolean DeleteKeyword(String word) {
