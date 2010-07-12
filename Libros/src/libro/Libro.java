@@ -40,7 +40,7 @@ public class Libro {
 
 	public boolean addChapter(String NodeName, String fatherId) {
 		boolean result = true;
-		if (this.getChapters().getNodeByName(NodeName) == null) {
+		if (this.getChapters().isRepeatedName(NodeName)) {
 			if (fatherId.equals("0")) {
 				this.getChapters().addAtLast(NodeName);
 			} else {
@@ -112,9 +112,7 @@ public class Libro {
 			cant++;
 			list.addAtLast(string);
 		}
-
-		return this.chapters.deleteNode(list, cant, 0, this.chapters);
-		
+		return this.chapters.deleteNode(list, cant, 0, this.chapters);		
 	}
 	
 	

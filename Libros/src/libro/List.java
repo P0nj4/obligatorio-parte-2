@@ -205,8 +205,12 @@ public class List {
 	}
 
 	/** Retorna el nodo que tenga mismo nombre al recibido por parametro **/
-	public NodeList getNodeByName(String name) {
-		return this.getNodeByName(name, this.getFirst());
+	public boolean isRepeatedName(String name) {
+		if(this.getNodeByName(name, this.getFirst()) != null){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	private NodeList getNodeByName(String name, NodeList node) {
