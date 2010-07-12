@@ -205,23 +205,19 @@ public class Exercise implements IExercise {
 		int[] solucion = cantidadObjetos(menu, cantidadPlatos, tablaMenu,
 				caloriasMaxima);
 
-		System.out.println("<<<<<<<<<<<<<<<<<<<");
-
+		System.out.println("Platos que puede comer: ");
+		
+		int cantidadCalorias = 0;
 		for (int i = 0; i < solucion.length; i++) {
 			if (solucion[i] > 0) {
-				System.out.println(i + " ");
+				cantidadCalorias = cantidadCalorias + menu[i];
+				System.out.println("Plato nro: " +i + "");
 			}
 		}
+		System.out.println("total calorias consumidas = " + cantidadCalorias +"\n");
 
-		// for (int i = 0; i < cantidadPlatos; i++) {
-		// for (int j = 0; j < caloriasMaxima + 1; j++) {
-		// System.out.print(tablaMenu[i][j] + ",");
-		// }
-		// System.out.println("");
-		// }
-		System.out.println(">>>>>>>>>>>>");
 
-		return 0;
+		return cantidadCalorias;
 
 	}
 
