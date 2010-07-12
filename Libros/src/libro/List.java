@@ -51,7 +51,6 @@ public class List {
 		int ref = 0;
 		while (node != null) {
 			ref++;
-			// IdCount = ref+"";
 			String newId = IdCount + ref + "";
 			if (newId.equals(id)) {
 				return node;
@@ -67,18 +66,6 @@ public class List {
 			}
 		}
 		return aux;
-	}
-
-	private int ConvertToInt(String number) {
-		boolean found = false;
-		int counter = 0;
-		while (found == false) {
-			String aux = counter + "";
-			if (aux == number) {
-				return counter;
-			}
-		}
-		return counter;
 	}
 
 	public void DeleteAll() {
@@ -317,5 +304,36 @@ public class List {
 				capitulos = capitulos.getNext();
 			}
 		}
+	}
+
+	public boolean chapterDelete(String nroCapitulo, String[] vecNroCap, int tamañoVec) {
+		boolean resultado = false;
+
+		NodeList primero = this.getFirst().getNext();
+		if (nroCapitulo.equals("1")){
+			this.setFirst(null);
+			this.setFirst(primero);
+		}else{
+			
+			if (tamañoVec == 0){
+				int contador=2;
+				 while (primero.getNext() != null && nroCapitulo.equals(contador)){
+					 primero = primero.getNext();
+				 }
+				 
+				 NodeList tmp = primero.getNext();
+				 
+				 primero.getChilds().setFirst(null);
+				 
+//				 primero es el que teno que borrar.
+//				 primero ;
+				 primero.setNext(tmp);
+				 resultado = true;
+				 this.getFirst().setNext(primero);
+			}
+			
+		}
+		
+		return resultado;
 	}
 }
