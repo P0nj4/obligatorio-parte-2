@@ -19,7 +19,7 @@ public class Sistema {
 		if (l.addChapter(descripcion, nroPadre)) {
 			return Retorno.OK;
 		} else {
-			return Retorno.OK;
+			return Retorno.ERROR;
 		}
 	}
 

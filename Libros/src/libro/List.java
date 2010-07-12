@@ -100,7 +100,7 @@ public class List {
 						aux.getChilds().toString(newId + ".", res, level + 1, start, end, spacing+ "\t ");
 					}
 				} else {
-					aux.getChilds().toString(newId + ".", res, level + 1, start, end, spacing+ "\t ");
+					aux.getChilds().toString(newId + ".", res, level + 1, start, end, spacing);
 				}
 				aux = aux.getNext();
 			}
