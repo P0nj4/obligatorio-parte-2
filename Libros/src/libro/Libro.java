@@ -1,5 +1,7 @@
 package libro;
 
+import structures.StringList;
+
 public class Libro {
 	private String authorName;
 	private String name;
@@ -106,15 +108,15 @@ public class Libro {
 		boolean resultado = false;
 		
 		String[] cap = nroCapitulo.split("[^0-9]");
-
+		StringList list = new StringList();
 		int cant = -1;
 		for (String string : cap) {
 			cant++;
-			System.out.println();
+			list.addAtLast(string);
 		}
-		//this.chapters.chapterDelete(nroCapitulo, cap, cant);
-		this.chapters.deleteNode(cap, cant, 0, this.chapters);
-		return resultado;
+
+		return this.chapters.deleteNode(list, cant, 0, this.chapters);
+		
 	}
 	
 	

@@ -1,6 +1,7 @@
 package libro;
 
 import structures.KeywordNode;
+import structures.StringList;
 
 public class List {
 	private NodeList first;
@@ -260,7 +261,6 @@ public class List {
 	}
 
 	public void showChildrensChapterWhithKey(NodeList capitulos, String id, int contador, String key, boolean resultado) {
-
 		while (capitulos != null) {
 
 			KeywordNode keyList = capitulos.getKeywordList().getFirst();
@@ -268,7 +268,6 @@ public class List {
 				while (keyList != null) {
 					if (keyList.getKeyword() != null) {
 						if (keyList.getKeyword().toLowerCase().equals(key.toLowerCase())) {
-
 							System.out.println(id + "." + contador + "\t\t\t" + capitulos.getName() + " : " + key);
 							resultado = true;
 
@@ -303,20 +302,22 @@ public class List {
 		}
 	}
 
-	public boolean deleteNode(String[] vecNroCap, int tamanio, int lugarEnElArrayActual, List list) {
+	public boolean deleteNode(StringList vecNroCap, int tamanio, int lugarEnElArrayActual, List list) {
 		boolean resultado = false;
-		if (lugarEnElArrayActual == tamanio) {
-			resultado = DeleteWithinList(list, vecNroCap[tamanio]);
-		} else {
-			NodeList positionNode = list.getFirst();
-			String pos = 1 + "";
-			int conter = 1;
-			while (!pos.equals(vecNroCap[lugarEnElArrayActual])) {
-				positionNode = positionNode.getNext();
-				conter += 1;
-				pos = conter + "";
+		if (!list.isEmpty()) {
+			if (lugarEnElArrayActual == tamanio) {
+				resultado = DeleteWithinList(list, vecNroCap.getNodeById(tamanio).getDataValue());
+			} else {
+				NodeList positionNode = list.getFirst();
+				String pos = 1 + "";
+				int conter = 1;
+				while (!pos.equals(vecNroCap.getNodeById(lugarEnElArrayActual).getDataValue())) {
+					positionNode = positionNode.getNext();
+					conter += 1;
+					pos = conter + "";
+				}
+				resultado = deleteNode(vecNroCap, tamanio, lugarEnElArrayActual + 1, positionNode.getChilds());
 			}
-			resultado = deleteNode(vecNroCap, tamanio, lugarEnElArrayActual + 1, positionNode.getChilds());
 		}
 		return resultado;
 	}
@@ -350,41 +351,11 @@ public class List {
 			String aux = counter + "";
 			if (aux.equals(number)) {
 				return counter;
-			}else{
+			} else {
 				counter++;
 			}
 		}
 		return counter;
 	}
 
-	public boolean chapterDelete(String nroCapitulo, String[] vecNroCap, int tamanio) {
-		boolean resultado = false;
-
-		NodeList primero = this.getFirst().getNext();
-		if (nroCapitulo.equals("1")) {
-			this.setFirst(null);
-			this.setFirst(primero);
-		} else {
-
-			if (tamanio == 0) {
-				int contador = 2;
-				while (primero.getNext() != null && nroCapitulo.equals(contador)) {
-					primero = primero.getNext();
-				}
-
-				NodeList tmp = primero.getNext();
-
-				primero.getChilds().setFirst(null);
-
-				// primero es el que teno que borrar.
-				// primero ;
-				primero.setNext(tmp);
-				resultado = true;
-				this.getFirst().setNext(primero);
-			}
-
-		}
-
-		return resultado;
-	}
 }
