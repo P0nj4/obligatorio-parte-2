@@ -63,7 +63,7 @@ public class Libro {
 
 	public String toString(int start, int end) {
 		StringBuffer s = new StringBuffer();
-		this.getChapters().toString("", s, 1, start, end);
+		this.getChapters().toString("", s, 1, start, end, "");
 		if (s.toString().equals("")) {
 			return this.getAuthorName() + "\t" + this.getName() + "\n \nNo se ingresaron capitulos";
 		} else {
