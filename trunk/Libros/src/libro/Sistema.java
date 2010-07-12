@@ -25,7 +25,7 @@ public class Sistema {
 
 	public Retorno BorrarCapitulo(Libro l, String nroCapitulo) {
 		l.chapterDelete(nroCapitulo);
-		return Retorno.NO_IMPLEMENTADA;
+		return Retorno.OK;
 	}
 
 	public Retorno MostrarIndice(Libro l) {

@@ -39,7 +39,7 @@ public class Libro {
 	public boolean addChapter(String NodeName, String fatherId) {
 		boolean result = true;
 		if (this.getChapters().getNodeByName(NodeName) == null) {
-			if (fatherId == "0") {
+			if (fatherId.equals("0")) {
 				this.getChapters().addAtLast(NodeName);
 			} else {
 				NodeList subChapter = this.getChapters().getNodeById(fatherId, this.getChapters().getFirst(), "");
@@ -104,6 +104,18 @@ public class Libro {
 
 	public boolean chapterDelete(String nroCapitulo) {
 		boolean resultado = false;
+		
+		String[] cap = nroCapitulo.split("[^0-9]");
+
+		int cant = -1;
+		for (String string : cap) {
+			cant++;
+			System.out.println();
+		}
+
+		this.chapters.chapterDelete(nroCapitulo, cap, cant);
+		
+		
 		return resultado;
 	}
 	
