@@ -87,7 +87,7 @@ public class List {
 		}
 	}
 
-	public void toString(String IdCount, StringBuffer res, int level, int start, int end) {
+	public void toString(String IdCount, StringBuffer res, int level, int start, int end, String spacing) {
 		if (!this.isEmpty()) {
 			NodeList aux = this.first;
 			int ref = 0;
@@ -95,12 +95,12 @@ public class List {
 				ref++;
 				String newId = IdCount + ref + "";
 				if (level >= start && level <= end) {
-					res.append("\n " + newId + " " + aux.getName());
+					res.append("\n " + spacing + newId + " " + aux.getName());
 					if (!aux.getChilds().isEmpty()) {
-						aux.getChilds().toString(newId + ".", res, level + 1, start, end);
+						aux.getChilds().toString(newId + ".", res, level + 1, start, end, spacing+ "\t ");
 					}
 				} else {
-					aux.getChilds().toString(newId + ".", res, level + 1, start, end);
+					aux.getChilds().toString(newId + ".", res, level + 1, start, end, spacing+ "\t ");
 				}
 				aux = aux.getNext();
 			}
