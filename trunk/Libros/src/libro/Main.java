@@ -10,11 +10,11 @@ public class Main {
 		// ----PRUEBASok---------------------------------------------------//
 		// PruebaOK_1(s,p);
 		// PruebaOK_2(s,p);
-		// PruebaOK_3(s,p);
+		 PruebaOK_3(s,p);
 		// PruebaOK_4(s,p);
 		// PruebaOK_5(s,p);
 		// PruebaOK_6(s,p);
-		PruebaOK_7(s, p);
+		//PruebaOK_7(s, p);
 		//        
 		//
 		// //----PRUEBASerror---------------------------------------------------//
@@ -80,7 +80,7 @@ public class Main {
 		// Muestra estructura antes de eliminar
 		s.MostrarIndice(l);
 		// Elimina
-		p.ver(s.BorrarCapitulo(l, "2.2.1"), Sistema.Retorno.OK, "Se elimino el subcapitulo 2.2.1");
+		p.ver(s.BorrarCapitulo(l, "2.2.2"), Sistema.Retorno.OK, "Se elimino el subcapitulo 2.2.2");
 		// Muestra estructura despues de eliminar
 
 		p.ver(s.MostrarIndice(l), Sistema.Retorno.OK, "Se mostro el indice de capitulos");

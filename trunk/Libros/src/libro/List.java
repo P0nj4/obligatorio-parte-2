@@ -148,9 +148,7 @@ public class List {
 	}
 
 	/**
-	 * Llama a la funcion getNodeById para obtener el nodo buscado, una vez que lo encuentra le pide al nodo
-	 * que se agregue la palabra clave Retorna true si existe un nodo con el id recibido por parametro y pudo
-	 * agregar la palabra clave, en caso contrario retorna false
+	 * Llama a la funcion getNodeById para obtener el nodo buscado, una vez que lo encuentra le pide al nodo que se agregue la palabra clave Retorna true si existe un nodo con el id recibido por parametro y pudo agregar la palabra clave, en caso contrario retorna false
 	 * 
 	 * @param word
 	 *            - String - Palabra clave
@@ -170,8 +168,7 @@ public class List {
 	}
 
 	/**
-	 * Dado un id recorre todos los hijos y hermanos del nodo y agrega el nombre y sus palabras claves
-	 * correspondientes a un string, para posteriormente devolverlo
+	 * Dado un id recorre todos los hijos y hermanos del nodo y agrega el nombre y sus palabras claves correspondientes a un string, para posteriormente devolverlo
 	 * 
 	 * @param IdCount
 	 *            - String - Se debe pasar un string vacio, es decir ""
@@ -306,34 +303,88 @@ public class List {
 		}
 	}
 
+	public boolean deleteNode(String[] vecNroCap, int tamanio, int lugarEnElArrayActual, List list) {
+		boolean resultado = false;
+		if (lugarEnElArrayActual == tamanio) {
+			resultado = DeleteWithinList(list, vecNroCap[tamanio]);
+		} else {
+			NodeList positionNode = list.getFirst();
+			String pos = 1 + "";
+			int conter = 1;
+			while (!pos.equals(vecNroCap[lugarEnElArrayActual])) {
+				positionNode = positionNode.getNext();
+				conter += 1;
+				pos = conter + "";
+			}
+			resultado = deleteNode(vecNroCap, tamanio, lugarEnElArrayActual + 1, positionNode.getChilds());
+		}
+		return resultado;
+	}
+
+	private boolean DeleteWithinList(List list, String position) {
+		boolean result = false;
+		if (position.equals("1")) {
+			list.setFirst(list.getFirst().getNext());
+			result = true;
+		} else {
+			NodeList positionNode = list.getFirst();
+			int pos = 1;
+			while (pos != ConvertToInt(position) - 1 && positionNode != null) {
+				positionNode = positionNode.getNext();
+				pos++;
+			}
+			if (positionNode != null && positionNode.getNext() != null) {
+				positionNode.setNext(positionNode.getNext().getNext());
+				result = true;
+			} else {
+				result = false;
+			}
+		}
+		return result;
+	}
+
+	private int ConvertToInt(String number) {
+		boolean found = false;
+		int counter = 0;
+		while (found == false) {
+			String aux = counter + "";
+			if (aux.equals(number)) {
+				return counter;
+			}else{
+				counter++;
+			}
+		}
+		return counter;
+	}
+
 	public boolean chapterDelete(String nroCapitulo, String[] vecNroCap, int tamanio) {
 		boolean resultado = false;
 
 		NodeList primero = this.getFirst().getNext();
-		if (nroCapitulo.equals("1")){
+		if (nroCapitulo.equals("1")) {
 			this.setFirst(null);
 			this.setFirst(primero);
-		}else{
-			
-			if (tamanio == 0){
-				int contador=2;
-				 while (primero.getNext() != null && nroCapitulo.equals(contador)){
-					 primero = primero.getNext();
-				 }
-				 
-				 NodeList tmp = primero.getNext();
-				 
-				 primero.getChilds().setFirst(null);
-				 
-//				 primero es el que teno que borrar.
-//				 primero ;
-				 primero.setNext(tmp);
-				 resultado = true;
-				 this.getFirst().setNext(primero);
+		} else {
+
+			if (tamanio == 0) {
+				int contador = 2;
+				while (primero.getNext() != null && nroCapitulo.equals(contador)) {
+					primero = primero.getNext();
+				}
+
+				NodeList tmp = primero.getNext();
+
+				primero.getChilds().setFirst(null);
+
+				// primero es el que teno que borrar.
+				// primero ;
+				primero.setNext(tmp);
+				resultado = true;
+				this.getFirst().setNext(primero);
 			}
-			
+
 		}
-		
+
 		return resultado;
 	}
 }
