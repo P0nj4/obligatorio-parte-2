@@ -104,9 +104,7 @@ public class Libro {
 		return this.getChapters().DeleteKeyword(id, word);
 	}
 
-	public boolean chapterDelete(String nroCapitulo) {
-		boolean resultado = false;
-		
+	public boolean chapterDelete(String nroCapitulo) {		
 		String[] cap = nroCapitulo.split("[^0-9]");
 		StringList list = new StringList();
 		int cant = -1;
