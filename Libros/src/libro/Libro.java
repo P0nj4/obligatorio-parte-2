@@ -113,7 +113,8 @@ public class Libro {
 			System.out.println();
 		}
 
-		this.chapters.chapterDelete(nroCapitulo, cap, cant);
+		//this.chapters.chapterDelete(nroCapitulo, cap, cant);
+		this.chapters.deleteNode(cap, cant, 0, this.chapters);
 		
 		
 		return resultado;
