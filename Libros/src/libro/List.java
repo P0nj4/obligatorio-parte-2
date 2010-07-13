@@ -71,20 +71,20 @@ public class List {
 
 	public void DeleteAll() {
 		if (!this.isEmpty()) {
-			NodeList aux = this.first;
-			while (aux.getNext() != null) {
-				NodeList aux2 = aux;
+			//NodeList aux = this.first;
+			while (this.first.getNext() != null) {
+				NodeList aux2 = this.first;
 				while (aux2.getNext().getNext() != null) {
 					aux2 = aux2.getNext();
-					
 				}
-				aux2.getNext().getKeywordList().deleteAll();
-				aux2.getNext().getChilds().DeleteAll();
+				NodeList lastOne = aux2.getNext();
+				lastOne.getChilds().DeleteAll();
+				lastOne.getKeywordList().deleteAll();
 				aux2.setNext(null);
 			}
 
-			aux.getChilds().DeleteAll();
-			aux.setNext(null);
+			this.first.getChilds().DeleteAll();
+			//this.first.setNext(null);
 			this.first = null;
 		}
 	}
