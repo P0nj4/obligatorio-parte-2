@@ -7,13 +7,13 @@ public class Main {
 		Prueba p = new Prueba();
 
 		// ----PRUEBASok---------------------------------------------------//
-		PruebaOK_1(s, p);
+		/*PruebaOK_1(s, p);
 		PruebaOK_2(s, p);
 		PruebaOK_3(s, p);
 		PruebaOK_4(s, p);
 		PruebaOK_5(s, p);
-		PruebaOK_6(s, p);
-		PruebaOK_7(s, p);
+		PruebaOK_6(s, p);*/
+		PruebaOK_7(s, p);/*
 
 		// ----PRUEBASerror---------------------------------------------------//
 		PruebaError_1(s, p);
@@ -21,7 +21,7 @@ public class Main {
 		PruebaError_3(s, p);
 
 		// ----Resultados---------------------------------------------------//
-		p.imprimirResultadosPrueba();
+		p.imprimirResultadosPrueba();*/
 	}
 
 	/*--------Pruebas OK ---------------------------*/
