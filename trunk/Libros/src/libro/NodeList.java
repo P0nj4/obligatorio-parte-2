@@ -1,18 +1,18 @@
 package libro;
 
-import structures.KeywordList;
+import structures.KeyWordList;
 
 public class NodeList {
 	private String name;
 	private NodeList next;
 	private List childs;
-	private KeywordList keywordList;
+	private KeyWordList keywordList;
 
-	public KeywordList getKeywordList() {
+	public KeyWordList getKeywordList() {
 		return keywordList;
 	}
 
-	public void setKeywordList(KeywordList keywordList) {
+	public void setKeywordList(KeyWordList keywordList) {
 		this.keywordList = keywordList;
 	}
 
@@ -44,18 +44,18 @@ public class NodeList {
 		this.name = name;
 		this.next = next;
 		this.childs = new List();
-		this.keywordList = new KeywordList();
+		this.keywordList = new KeyWordList();
 	}
 
 	public NodeList(String name) {
 		this.name = name;
 		this.next = null;
 		this.childs = new List();
-		this.keywordList = new KeywordList();
+		this.keywordList = new KeyWordList();
 	}
 
 	public void addKeyword(String word) {
-		this.getKeywordList().AddAtLast(word);
+		this.getKeywordList().addAtLast(word);
 	}
 
 	public String getKewywordToString() {

@@ -3,27 +3,25 @@ package libro;
 public class Main {
 
 	public static void main(String[] args) {
-
 		Sistema s = new Sistema();
 		Prueba p = new Prueba();
 
 		// ----PRUEBASok---------------------------------------------------//
-		 PruebaOK_1(s,p);
-		 PruebaOK_2(s,p);
-		PruebaOK_3(s,p);
-		 PruebaOK_4(s,p);
-		 PruebaOK_5(s,p);
-		 PruebaOK_6(s,p);
+		PruebaOK_1(s, p);
+		PruebaOK_2(s, p);
+		PruebaOK_3(s, p);
+		PruebaOK_4(s, p);
+		PruebaOK_5(s, p);
+		PruebaOK_6(s, p);
 		PruebaOK_7(s, p);
-		//        
-		//
-		// //----PRUEBASerror---------------------------------------------------//
-		 PruebaError_1(s,p);
-		 PruebaError_2(s,p);
-		 PruebaError_3(s,p);
-		//
-		// //----Resultados---------------------------------------------------//
-		 p.imprimirResultadosPrueba();
+
+		// ----PRUEBASerror---------------------------------------------------//
+		PruebaError_1(s, p);
+		PruebaError_2(s, p);
+		PruebaError_3(s, p);
+
+		// ----Resultados---------------------------------------------------//
+		p.imprimirResultadosPrueba();
 	}
 
 	/*--------Pruebas OK ---------------------------*/
@@ -143,6 +141,8 @@ public class Main {
 		p.ver(s.MostrarIndice(l), Sistema.Retorno.OK, "Se mostro el indice de capitulos");
 
 		p.ver(s.AgregarPalabraClave(l, "1", "camino"), Sistema.Retorno.OK, "Se agrego palabra clave *camino* al capitulo 1");
+		p.ver(s.AgregarPalabraClave(l, "1", "camino2"), Sistema.Retorno.OK, "Se agrego palabra clave *camino* al capitulo 1");
+		p.ver(s.AgregarPalabraClave(l, "1", "camino3"), Sistema.Retorno.OK, "Se agrego palabra clave *camino* al capitulo 1");
 		p.ver(s.AgregarPalabraClave(l, "2", "CABALLO"), Sistema.Retorno.OK, "Se agrego palabra clave *CABALLO* al capitulo 2");
 		p.ver(s.AgregarPalabraClave(l, "2.1", "caballo"), Sistema.Retorno.OK, "Se agrego palabra clave *caballo* al capitulo 2.1");
 		p.ver(s.AgregarPalabraClave(l, "2.1", "Sol"), Sistema.Retorno.OK, "Se agrego palabra clave *caballo* al capitulo 2.1");
@@ -167,6 +167,8 @@ public class Main {
 
 		// Agrega claves
 		s.AgregarPalabraClave(l, "1", "camino");
+		s.AgregarPalabraClave(l, "1", "camino2");
+		s.AgregarPalabraClave(l, "1", "camino3");
 		s.AgregarPalabraClave(l, "2", "CABALLO");
 		s.AgregarPalabraClave(l, "2", "pepe");
 		s.AgregarPalabraClave(l, "2", "CABallo");
