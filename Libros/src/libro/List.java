@@ -76,11 +76,13 @@ public class List {
 				NodeList aux2 = aux;
 				while (aux2.getNext().getNext() != null) {
 					aux2 = aux2.getNext();
+					
 				}
-				aux2.getChilds().DeleteAll();
+				aux2.getNext().getKeywordList().deleteAll();
+				aux2.getNext().getChilds().DeleteAll();
 				aux2.setNext(null);
-				/* aux = aux.getNext(); */
 			}
+
 			aux.getChilds().DeleteAll();
 			aux.setNext(null);
 			this.first = null;
@@ -97,7 +99,7 @@ public class List {
 				if (level >= start && level <= end) {
 					res.append("\n " + spacing + newId + " " + aux.getName());
 					if (!aux.getChilds().isEmpty()) {
-						aux.getChilds().toString(newId + ".", res, level + 1, start, end, spacing+ "\t ");
+						aux.getChilds().toString(newId + ".", res, level + 1, start, end, spacing + "\t ");
 					}
 				} else {
 					aux.getChilds().toString(newId + ".", res, level + 1, start, end, spacing);
@@ -149,7 +151,9 @@ public class List {
 	}
 
 	/**
-	 * Llama a la funcion getNodeById para obtener el nodo buscado, una vez que lo encuentra le pide al nodo que se agregue la palabra clave Retorna true si existe un nodo con el id recibido por parametro y pudo agregar la palabra clave, en caso contrario retorna false
+	 * Llama a la funcion getNodeById para obtener el nodo buscado, una vez que lo encuentra le pide al nodo
+	 * que se agregue la palabra clave Retorna true si existe un nodo con el id recibido por parametro y pudo
+	 * agregar la palabra clave, en caso contrario retorna false
 	 * 
 	 * @param word
 	 *            - String - Palabra clave
@@ -169,7 +173,8 @@ public class List {
 	}
 
 	/**
-	 * Dado un id recorre todos los hijos y hermanos del nodo y agrega el nombre y sus palabras claves correspondientes a un string, para posteriormente devolverlo
+	 * Dado un id recorre todos los hijos y hermanos del nodo y agrega el nombre y sus palabras claves
+	 * correspondientes a un string, para posteriormente devolverlo
 	 * 
 	 * @param IdCount
 	 *            - String - Se debe pasar un string vacio, es decir ""
@@ -199,16 +204,16 @@ public class List {
 		boolean result = false;
 		NodeList wanted = this.getNodeById(id, this.getFirst(), "");
 		if (wanted != null) {
-			result = wanted.getKeywordList().DeleteKeyword(word);
+			result = wanted.getKeywordList().deleteKeyword(word);
 		}
 		return result;
 	}
 
 	/** Retorna el nodo que tenga mismo nombre al recibido por parametro **/
 	public boolean isRepeatedName(String name) {
-		if(this.getNodeByName(name, this.getFirst()) != null){
+		if (this.getNodeByName(name, this.getFirst()) != null) {
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
@@ -310,7 +315,7 @@ public class List {
 		boolean resultado = false;
 		if (!list.isEmpty()) {
 			if (lugarEnElArrayActual == tamanio) {
-				resultado = DeleteWithinList(list, vecNroCap.getNodeById(tamanio).getDataValue());
+				resultado = deleteWithinList(list, vecNroCap.getNodeById(tamanio).getDataValue());
 			} else {
 				NodeList positionNode = list.getFirst();
 				String pos = 1 + "";
@@ -326,9 +331,10 @@ public class List {
 		return resultado;
 	}
 
-	private boolean DeleteWithinList(List list, String position) {
+	private boolean deleteWithinList(List list, String position) {
 		boolean result = false;
 		if (position.equals("1")) {
+			list.getFirst().getChilds().DeleteAll();
 			list.setFirst(list.getFirst().getNext());
 			result = true;
 		} else {
@@ -339,6 +345,7 @@ public class List {
 				pos++;
 			}
 			if (positionNode != null && positionNode.getNext() != null) {
+				positionNode.getChilds().DeleteAll();
 				positionNode.setNext(positionNode.getNext().getNext());
 				result = true;
 			} else {

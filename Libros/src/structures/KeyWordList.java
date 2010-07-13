@@ -1,6 +1,8 @@
 package structures;
 
-public class KeywordList {
+
+public class KeyWordList {
+
 	private KeywordNode first;
 
 	public KeywordNode getFirst() {
@@ -19,7 +21,7 @@ public class KeywordList {
 		}
 	}
 
-	public void AddAtLast(String keyword) {
+	public void addAtLast(String keyword) {
 		KeywordNode newone = new KeywordNode(keyword);
 		if (this.isEmpty()) {
 			this.setFirst(newone);
@@ -42,24 +44,45 @@ public class KeywordList {
 		return allNodes;
 	}
 
-	public boolean DeleteKeyword(String word) {
-		boolean found=false;
+	public boolean deleteKeyword(String word) {
+		boolean found = false;
 		if (this.isEmpty()) {
-			found=false;
+			found = false;
 		} else {
-			KeywordNode node = this.getFirst();			
-			while (node!= null && node.getNext() != null) {
-				if(node.getNext().getKeyword().toLowerCase().equals(word.toLowerCase())){
+			KeywordNode node = this.getFirst();
+			while (node != null && node.getNext() != null) {
+				if (node.getNext().getKeyword().toLowerCase().equals(word.toLowerCase())) {
 					node.setNext(node.getNext().getNext());
-					found=true;
+					found = true;
 				}
 				node = node.getNext();
 			}
-			if(first.getKeyword().toLowerCase().equals(word.toLowerCase())){
-				first= first.getNext();
-				found=true;
+			if (first.getKeyword().toLowerCase().equals(word.toLowerCase())) {
+				first = first.getNext();
+				found = true;
 			}
 		}
 		return found;
+	}
+
+	public void deleteAll() {
+		
+		if (!this.isEmpty()) {
+			KeywordNode aux = this.first;
+
+			while (aux.getNext() != null) {
+
+				KeywordNode aux2 = aux.getNext();
+
+				while (aux2.getNext() != null) {
+					aux2 = aux2.getNext();
+				}
+				aux2.setNext(null);
+				aux = aux.getNext();
+			}
+
+			aux.setNext(null);
+			this.first = null;
+		}
 	}
 }
