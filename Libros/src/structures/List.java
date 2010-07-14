@@ -373,7 +373,7 @@ public class List {
 			NodeList positionNode = list.getFirst();
 			int pos = 1;
 			String posString = pos+1+""; 
-			while (!posString.equals(position)) {
+			while (!posString.equals(position) && positionNode != null) {
 				positionNode = positionNode.getNext();
 				pos++;
 				posString = pos+1+""; 
