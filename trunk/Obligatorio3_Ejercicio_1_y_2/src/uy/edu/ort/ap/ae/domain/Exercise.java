@@ -16,7 +16,7 @@ public class Exercise implements IExercise {
 		// -------- Ingresar como parametro de la funci�n testAll los n�meros de
 		// estudiantes
 		// -------- por ejemplo: 123456-789012
-		prueba.testAll("141560-NroAle");
+		prueba.testAll("141560-142329");
 	}
 
 	/**
