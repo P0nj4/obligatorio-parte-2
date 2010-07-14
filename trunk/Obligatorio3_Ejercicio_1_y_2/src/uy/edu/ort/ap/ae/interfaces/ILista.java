@@ -18,4 +18,6 @@ public interface ILista {
 	public boolean FindElement(Object p);
 	
 	public void deleteElement(Object p);
+	
+	public void erease();
 }

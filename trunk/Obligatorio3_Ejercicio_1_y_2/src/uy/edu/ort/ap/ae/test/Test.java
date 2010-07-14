@@ -21,7 +21,7 @@ public class Test {
 		output = "\n\r";
 
 		try {
-			this.testExplorador(false);
+			this.testExplorador(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 			output += "\n\r --- Fallo el test de EXPLORADOR --- \n\r";
@@ -52,18 +52,23 @@ public class Test {
 			output += "\n\r --- EXPLORADOR: No implementado --- \n\r";
 		} else {
 			test = 1;
-			int[][] mapa1 = { { 20, -10, -10, -10 }, { 20, -20, -20, -20 }, { -30, -10, -10, -40 }, { 10, 20, 10, -10 } };
+			int[][] mapa1 = { { 20, -10, -10, -10 }, 
+					          { 20, -20, -20, -20 }, 
+					          { -30, -10, -10, -40 }, 
+					          { 10, 20, 10, -10 } };
 			runTestExplorador(0, 0, 3, 3, 0, 6, mapa1, 4, 4, "");
-			// runTestExplorador (2,1, 4,6, 5, 10, mapa1, 5, 8,
-			// " \r\nPrueba "+test);
 
 			test = 2;
 
-			int[][] mapa2 = { { -5, -3, 15, -2, -9, -15, -20, 2 }, { 3, 0, 2, -4, -3, -4, 23, 12 }, { 5, -3, 15, -2, -7, -5, -14, 2 }, { 6, 9, 1, 8, -9, 12, 10, 5 }, { 5, -3, 6, -2, 3, -19, 8, 2 } };
+			int[][] mapa2 = { { -5, -3, 15, -2, -9, -15, -20,  2 },
+					          { 3,   0,  2, -4, -3,  -4,  23, 12 }, 
+					          { 5,  -3, 15, -2, -7,  -5, -14,  2 }, 
+					          { 6,   9,  1,  8, -9,  12,  10,  5 },
+					          { 5,  -3,  6, -2,  3, -19,   8,  2 } };
 
-			runTestExplorador(2, 1, 4, 6, 5, 10, mapa1, 5, 8, " \r\nPrueba " + test);
-			runTestExplorador(0, 0, 4, 7, 14, 8, mapa1, 5, 8, " \r\nPrueba " + test);
-			runTestExplorador(2, 1, 0, 0, 4, 5, mapa1, 3, 3, " \r\nPrueba " + test);
+			runTestExplorador(2, 1, 4, 6, 5, 10, mapa2, 5, 8, " \r\nPrueba " + test);
+			runTestExplorador(0, 0, 4, 7, 14, 8, mapa2, 5, 8, " \r\nPrueba " + test);
+			runTestExplorador(2, 1, 0, 0, 4, 5, mapa2, 3, 3, " \r\nPrueba " + test);
 
 			test--;
 			output += "\n\r\n\r------------------------------------------------------- \r\n";

@@ -54,6 +54,11 @@ public class Queue implements ILista, Cloneable {
 		}
 	}
 
+	public void erease(){
+		while(this.front != null){
+			this.tail();
+		}
+	}
 	/**
 	 * Retorna true sii la cola (Queue) se encuentra vacia, sin elementos
 	 */

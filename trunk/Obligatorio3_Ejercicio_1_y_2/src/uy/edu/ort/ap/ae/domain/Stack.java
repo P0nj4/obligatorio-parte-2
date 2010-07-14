@@ -122,4 +122,13 @@ public class Stack implements ILista, Cloneable{
 		}
 		
 	}
+
+	@Override
+	public void erease() {
+		// TODO Auto-generated method stub
+		while(this.node!= null){
+			this.tail();
+		}
+		
+	}
 }
