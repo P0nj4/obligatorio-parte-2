@@ -73,7 +73,7 @@ public class Libro {
 		StringBuffer s = new StringBuffer();
 		this.getChapters().toString(this.vacio, s, 1, start, end, this.vacio);
 		if (s.toString().equals(this.vacio)) {
-			return this.notHaveEpisodes();
+			return this.notFoundEpisodes();
 		} else {
 			return s.toString();
 		}
@@ -122,12 +122,20 @@ public class Libro {
 	}
 
 	public boolean showChaptersWithKey(String key) {
-		boolean resultado = false;
-		this.chapters.showChaptersWithKey(key);
-		return resultado;
+		StringBuffer s = new StringBuffer();
+		this.chapters.showChaptersWithKey("",key,s);
+		if(s.toString().equals("")){
+			return false;
+		}else{
+			System.out.println(s);
+			return true;
+		}
 	}
 	
 	public String notHaveEpisodes(){
 		return this.getAuthorName() + "\t - " + this.getName() + "\n \n" + "No se ingresaron capitulos";
+	}
+	public String notFoundEpisodes(){
+		return this.getAuthorName() + "\t - " + this.getName() + "\n \n" + "No se encontraron capitulos";
 	}
 }

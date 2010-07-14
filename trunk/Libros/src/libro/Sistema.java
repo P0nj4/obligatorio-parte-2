@@ -186,7 +186,7 @@ public class Sistema {
 		if (l.showChaptersWithKey(clave)) {
 			return Retorno.OK;
 		} else {
-			l.notHaveEpisodes();
+			System.out.println(l.notFoundEpisodes());
 			return null;
 		}
 
