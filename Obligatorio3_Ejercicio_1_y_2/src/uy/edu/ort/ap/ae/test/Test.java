@@ -41,8 +41,7 @@ public class Test {
 	}
 
 	/**
-	 * Prueba el m�todo explorador implementado en la clase Excercise Agrega al
-	 * atributo out el resultado de cada una de las pruebas realizadas.
+	 * Prueba el m�todo explorador implementado en la clase Excercise Agrega al atributo out el resultado de cada una de las pruebas realizadas.
 	 * 
 	 * @param isImplemented
 	 *            determina si est� o no implementado el m�todo explorador
@@ -53,26 +52,18 @@ public class Test {
 			output += "\n\r --- EXPLORADOR: No implementado --- \n\r";
 		} else {
 			test = 1;
-			int[][] mapa1 = { { 20, -10, -10, -10 }, { 20, -20, -20, -20 },
-					{ -30, -10, -10, -40 }, { 10, 20, 10, -10 } };
+			int[][] mapa1 = { { 20, -10, -10, -10 }, { 20, -20, -20, -20 }, { -30, -10, -10, -40 }, { 10, 20, 10, -10 } };
 			runTestExplorador(0, 0, 3, 3, 0, 6, mapa1, 4, 4, "");
 			// runTestExplorador (2,1, 4,6, 5, 10, mapa1, 5, 8,
 			// " \r\nPrueba "+test);
 
 			test = 2;
 
-			int[][] mapa2 = { { -5, -3, 15, -2, -9, -15, -20, 2 },
-					{ 3, 0, 2, -4, -3, -4, 23, 12 },
-					{ 5, -3, 15, -2, -7, -5, -14, 2 },
-					{ 6, 9, 1, 8, -9, 12, 10, 5 },
-					{ 5, -3, 6, -2, 3, -19, 8, 2 } };
+			int[][] mapa2 = { { -5, -3, 15, -2, -9, -15, -20, 2 }, { 3, 0, 2, -4, -3, -4, 23, 12 }, { 5, -3, 15, -2, -7, -5, -14, 2 }, { 6, 9, 1, 8, -9, 12, 10, 5 }, { 5, -3, 6, -2, 3, -19, 8, 2 } };
 
-			runTestExplorador(2, 1, 4, 6, 5, 10, mapa1, 5, 8, " \r\nPrueba "
-					+ test);
-			runTestExplorador(0, 0, 4, 7, 14, 8, mapa1, 5, 8, " \r\nPrueba "
-					+ test);
-			runTestExplorador(2, 1, 0, 0, 4, 5, mapa1, 3, 3, " \r\nPrueba "
-					+ test);
+			runTestExplorador(2, 1, 4, 6, 5, 10, mapa1, 5, 8, " \r\nPrueba " + test);
+			runTestExplorador(0, 0, 4, 7, 14, 8, mapa1, 5, 8, " \r\nPrueba " + test);
+			runTestExplorador(2, 1, 0, 0, 4, 5, mapa1, 3, 3, " \r\nPrueba " + test);
 
 			test--;
 			output += "\n\r\n\r------------------------------------------------------- \r\n";
@@ -82,10 +73,7 @@ public class Test {
 	}
 
 	/**
-	 * Metodo que ejecuta el metodo explorador implementado en la clase
-	 * Excercise utilizando los parametros del metodo. Agrega el resultado de la
-	 * ejecucion al atributo output de la clase. Aumenta el contador de pruebas
-	 * realizadas (atributo test)
+	 * Metodo que ejecuta el metodo explorador implementado en la clase Excercise utilizando los parametros del metodo. Agrega el resultado de la ejecucion al atributo output de la clase. Aumenta el contador de pruebas realizadas (atributo test)
 	 * 
 	 * @param iOrigen
 	 *            fila de origen del explorador
@@ -98,8 +86,7 @@ public class Test {
 	 * @param nivelDeEnergiaActual
 	 *            valor correspondiente a la energia actual
 	 * @param maxPasos
-	 *            cantidad maxima de pasos que puede dar el explorador desde
-	 *            origen a destino
+	 *            cantidad maxima de pasos que puede dar el explorador desde origen a destino
 	 * @param mapa
 	 *            mapa en el que se encuentra
 	 * @param n
@@ -110,9 +97,7 @@ public class Test {
 	 *            string con datos relevantes de la prueba
 	 * 
 	 */
-	public void runTestExplorador(int iOrigen, int jOrigen, int iDestino,
-			int jDestino, int nivelDeEnergiaActual, int maxPasos, int mapa[][],
-			int n, int m, String info) {
+	public void runTestExplorador(int iOrigen, int jOrigen, int iDestino, int jDestino, int nivelDeEnergiaActual, int maxPasos, int mapa[][], int n, int m, String info) {
 
 		test++;
 		output += info;
@@ -121,9 +106,7 @@ public class Test {
 		ILista mejoresCaminos = new Queue();
 
 		try {
-			excercise.explorador(iOrigen, jOrigen, iDestino, jDestino,
-					nivelDeEnergiaActual, 0, maxPasos, 0, caminoActual,
-					mejoresCaminos, mapa, n, m);
+			excercise.explorador(iOrigen, jOrigen, iDestino, jDestino, nivelDeEnergiaActual, 0, maxPasos, 0, caminoActual, mejoresCaminos, mapa, n, m);
 			output += "\n\r" + mejoresCaminos.toString();
 
 		} catch (Exception e) {
@@ -133,8 +116,7 @@ public class Test {
 	}
 
 	/**
-	 * Prueba el m�todo nutricionista implementado en la clase Excercise Agrega
-	 * al atributo out el resultado de cada una de las pruebas realizadas.
+	 * Prueba el m�todo nutricionista implementado en la clase Excercise Agrega al atributo out el resultado de cada una de las pruebas realizadas.
 	 * 
 	 * @param isImplemented
 	 *            determina si est� o no implementado el m�todo nutricionista
@@ -148,19 +130,14 @@ public class Test {
 			test = 1;
 
 			/*
-			 * menu representa una carta con 5 platos plato 1 10 calorias plato
-			 * 2 8 calorias plato 3 15 calorias plato 4 34 calorias plato 5 26
-			 * calorias
+			 * menu representa una carta con 5 platos plato 1 10 calorias plato 2 8 calorias plato 3 15 calorias plato 4 34 calorias plato 5 26 calorias
 			 */
 			int[] menu = { 0, 10, 8, 15, 34, 26 };
 
-			runTestNutricionista(menu, menu.length, 22, 18, " \r\nPrueba "
-					+ test);
+			runTestNutricionista(menu, menu.length, 22, 18, " \r\nPrueba " + test);
 
-			runTestNutricionista(menu, menu.length, 40, 36, " \r\nPrueba "
-					+ test);
-			runTestNutricionista(menu, menu.length, 60, 60, " \r\nPrueba "
-					+ test);
+			runTestNutricionista(menu, menu.length, 40, 36, " \r\nPrueba " + test);
+			runTestNutricionista(menu, menu.length, 60, 60, " \r\nPrueba " + test);
 
 			test--;
 			output += "\n\r\n\r------------------------------------------------------- \r\n";
@@ -170,30 +147,21 @@ public class Test {
 	}
 
 	/**
-	 * Metodo que ejecuta el metodo nutricionista implementado en la clase
-	 * Excercise utilizando los parametros del metodo. Agrega el resultado de la
-	 * ejecucion al atributo output de la clase. Aumenta el contador de pruebas
-	 * realizadas (atributo test)
+	 * Metodo que ejecuta el metodo nutricionista implementado en la clase Excercise utilizando los parametros del metodo. Agrega el resultado de la ejecucion al atributo output de la clase. Aumenta el contador de pruebas realizadas (atributo test)
 	 * 
 	 * @param menu
-	 *            array con las calorias de cada plato. Cada indice corresponde
-	 *            a un plato, y el valor en el array es el n�mero de calorias
-	 *            del plato de ese indice, comienza a partir del indice 1, la
-	 *            posicion cero no se considerara como plato
+	 *            array con las calorias de cada plato. Cada indice corresponde a un plato, y el valor en el array es el n�mero de calorias del plato de ese indice, comienza a partir del indice 1, la posicion cero no se considerara como plato
 	 * @param cantidadPlatos
-	 *            cantidad de platos del menu. Corresponde al tamaño-1 de la
-	 *            tabla menu
+	 *            cantidad de platos del menu. Corresponde al tamaño-1 de la tabla menu
 	 * @param caloriasMaxima
 	 *            numero de calorias que necesita el nutricionista
 	 * @param resultadoEsperado
-	 *            resultado esperado para compara con lo que retorna la
-	 *            ejecucion del metodo nutricionista
+	 *            resultado esperado para compara con lo que retorna la ejecucion del metodo nutricionista
 	 * @param info
 	 *            string con datos relevantes de la prueba
 	 * 
 	 */
-	public void runTestNutricionista(int[] menu, int cantidadPlatos,
-			int caloriasMaxima, int resultadoEsperado, String info) {
+	public void runTestNutricionista(int[] menu, int cantidadPlatos, int caloriasMaxima, int resultadoEsperado, String info) {
 
 		test++;
 		output += info;
@@ -202,14 +170,12 @@ public class Test {
 		try {
 			int[][] tablaMenu = new int[cantidadPlatos][caloriasMaxima + 1];
 			boolean[] menuOptimo = new boolean[cantidadPlatos];
-			int result = excercise.nutricionista(menu, cantidadPlatos,
-					caloriasMaxima, tablaMenu, menuOptimo);
+			int result = excercise.nutricionista(menu, cantidadPlatos, caloriasMaxima, tablaMenu, menuOptimo);
 			if (result == resultadoEsperado) {
 				testOk++;
 				output += ": OK ";
 			} else {
-				output += "\n   Fallo valor esperado = " + resultadoEsperado
-						+ " valor obtenido = " + result;
+				output += "\n   Fallo valor esperado = " + resultadoEsperado + " valor obtenido = " + result;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -239,13 +205,10 @@ public class Test {
 							}
 						}
 					} else {
-						System.out
-								.println("No tiene permisos suficientes para escribir en el archivo "
-										+ filePath);
+						System.out.println("No tiene permisos suficientes para escribir en el archivo " + filePath);
 					}
 				} else {
-					System.out
-							.println("El archivo no existe y no puede ser creado.");
+					System.out.println("El archivo no existe y no puede ser creado.");
 				}
 			} else {
 				System.out.print("Ruta de arhivo inválida.");
