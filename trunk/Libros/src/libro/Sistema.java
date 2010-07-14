@@ -95,7 +95,7 @@ public class Sistema {
 	 * @param nivelHasta
 	 * @return
 	 * 
-	 * @precondiciones: . nivelDesde no puede ser menor a 1 y nivelHasta puede ser más grande que el nivel más grande, pero no menor a nivelDesde, en este caso solo se mostraría hasta el último nivel
+	 * @precondiciones: . nivelDesde no puede ser menor a 1 y nivelHasta puede ser más grande que el nivel más grande, pero no menor a nivelDesde.
 	 * 
 	 * @poscondiciones: Si el libro no contiene capítulos o no hay capítulos que resulten de la búsqueda se mostrará la siguiente salida. 
 		Salida: Horacio Quiroga – Cuentos
