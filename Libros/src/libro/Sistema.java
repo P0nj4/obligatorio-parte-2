@@ -60,12 +60,12 @@ public class Sistema {
 	 * @return
 	 * 
 	 * @Precondiciones: 
+	 * El nroPadre no debe ser un String vacio.
 	 * nroCapitulo debe existir.
-	 * nroCapitulo debe ser distinto de cero.
+	 * nroCapitulo debe ser distinto de cero y mayor o igual a 1.
 	 * 
 	 * @poscondiciones:
 	 * Si el capítulo a eliminar posee subcapítulos, éstos serán eliminados también, así como las palabras clave asociadas a cada uno de los capítulos.
-	 * Si se elimina el capítulo nro 0, se eliminara todo el libro. 
 	 * 
 	 */
 	public Retorno BorrarCapitulo(Libro l, String nroCapitulo) {

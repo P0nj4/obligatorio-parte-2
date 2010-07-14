@@ -372,12 +372,15 @@ public class List {
 		} else {
 			NodeList positionNode = list.getFirst();
 			int pos = 1;
-			while (pos != ConvertToInt(position) - 1 && positionNode != null) {
+			String posString = pos+1+""; 
+			while (!posString.equals(position)) {
 				positionNode = positionNode.getNext();
 				pos++;
+				posString = pos+1+""; 
 			}
+			//pregunto para asegurarme que con el while me quede con el hno del que quiero borrar
 			if (positionNode != null && positionNode.getNext() != null) {
-				positionNode.getChilds().deleteAll();
+				positionNode.getNext().getChilds().deleteAll();
 				positionNode.setNext(positionNode.getNext().getNext());
 				result = true;
 			} else {
@@ -385,20 +388,6 @@ public class List {
 			}
 		}
 		return result;
-	}
-
-	private int ConvertToInt(String number) {
-		boolean found = false;
-		int counter = 0;
-		while (found == false) {
-			String aux = counter + this.vacio;
-			if (aux.equals(number)) {
-				return counter;
-			} else {
-				counter++;
-			}
-		}
-		return counter;
 	}
 
 }
