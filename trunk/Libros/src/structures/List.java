@@ -66,29 +66,6 @@ public class List {
 		}
 	}
 
-/*public NodeList getNodeById(String id, NodeList node, String IdCount) {
-		NodeList aux = null;
-		int ref = 0;
-		while (node != null) {
-			ref++;
-			String newId = IdCount + ref + this.vacio;
-			if (newId.equals(id)) {
-				return node;
-			} else {
-				if (!node.getChilds().isEmpty()) {
-					aux = getNodeById(id, node.getChilds().getFirst(), newId
-							+ ".");
-				}
-				if (aux != null) {
-					node = null;
-				} else {
-					node = node.getNext();
-				}
-			}
-		}
-		return aux;
-	}
-*/
 	public void deleteAll() {
 		if (!this.isEmpty()) {
 			while (this.first.getNext() != null) {
