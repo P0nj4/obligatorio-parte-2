@@ -72,9 +72,8 @@ public class List {
 
 	public void deleteAll() {
 		if (!this.isEmpty()) {
-			NodeList aux = this.first;
-			while (aux.getNext() != null) {
-				NodeList aux2 = aux;
+			while (this.first.getNext() != null) {
+				NodeList aux2 = this.first;
 				while (aux2.getNext().getNext() != null) {
 					aux2 = aux2.getNext();
 				}
@@ -83,8 +82,7 @@ public class List {
 				aux2.setNext(null);
 			}
 
-			aux.getChilds().deleteAll();
-			aux.setNext(null);
+			this.first.getChilds().deleteAll();
 			this.first = null;
 		}
 	}
