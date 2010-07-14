@@ -50,7 +50,8 @@ public class Libro {
 			if (fatherId.equals("0")) {
 				this.getChapters().addAtLast(NodeName);
 			} else {
-				NodeList subChapter = this.getChapters().getNodeById(fatherId, this.getChapters().getFirst(), "");
+				String[] cap = fatherId.split("[^0-9]");
+				NodeList subChapter = this.getChapters().getNodeById(cap, cap.length, 0, chapters.getFirst());
 				if (subChapter == null) {
 					result = false;
 				} else {

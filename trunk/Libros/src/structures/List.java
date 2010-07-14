@@ -1,6 +1,5 @@
 package structures;
 
-
 public class List {
 
 	private NodeList first;
@@ -38,7 +37,8 @@ public class List {
 	}
 
 	/**
-	 * Retorna un elemento del tipo nodeList que corresponda al id recibido por parametro
+	 * Retorna un elemento del tipo nodeList que corresponda al id recibido por
+	 * parametro
 	 * 
 	 * @param id
 	 *            id buscado
@@ -48,7 +48,25 @@ public class List {
 	 *            Pasar "" siempre
 	 * @return nodeList
 	 */
-	public NodeList getNodeById(String id, NodeList node, String IdCount) {
+	public NodeList getNodeById(String[] id, int length, int currentPosition, NodeList node) {
+		NodeList aux = node;
+		int i = 1;
+		while (!id[currentPosition].equals(i + "")) {
+			if (node == null) {
+				return null;
+			} else {
+				node = node.getNext();
+			}
+			i++;
+		}
+		if (length - 1 == currentPosition) {
+			return node;
+		} else {
+			return getNodeById(id, length, currentPosition+1, node.getChilds().getFirst());
+		}
+	}
+
+/*public NodeList getNodeById(String id, NodeList node, String IdCount) {
 		NodeList aux = null;
 		int ref = 0;
 		while (node != null) {
@@ -58,7 +76,8 @@ public class List {
 				return node;
 			} else {
 				if (!node.getChilds().isEmpty()) {
-					aux = getNodeById(id, node.getChilds().getFirst(), newId + ".");
+					aux = getNodeById(id, node.getChilds().getFirst(), newId
+							+ ".");
 				}
 				if (aux != null) {
 					node = null;
@@ -69,7 +88,7 @@ public class List {
 		}
 		return aux;
 	}
-
+*/
 	public void deleteAll() {
 		if (!this.isEmpty()) {
 			while (this.first.getNext() != null) {
@@ -87,7 +106,8 @@ public class List {
 		}
 	}
 
-	public void toString(String IdCount, StringBuffer res, int level, int start, int end, String spacing) {
+	public void toString(String IdCount, StringBuffer res, int level,
+			int start, int end, String spacing) {
 		if (!this.isEmpty()) {
 			NodeList aux = this.first;
 			int ref = 0;
@@ -97,10 +117,12 @@ public class List {
 				if (level >= start && level <= end) {
 					res.append("\n " + spacing + newId + " " + aux.getName());
 					if (!aux.getChilds().isEmpty()) {
-						aux.getChilds().toString(newId + ".", res, level + 1, start, end, spacing + "\t ");
+						aux.getChilds().toString(newId + ".", res, level + 1,
+								start, end, spacing + "\t ");
 					}
 				} else {
-					aux.getChilds().toString(newId + ".", res, level + 1, start, end, spacing);
+					aux.getChilds().toString(newId + ".", res, level + 1,
+							start, end, spacing);
 				}
 				aux = aux.getNext();
 			}
@@ -136,7 +158,8 @@ public class List {
 	public void printChildrens(NodeList capitulos, String id, int contador) {
 
 		while (capitulos != null) {
-			System.out.println("\t" + id + "." + contador + " " + capitulos.getName());
+			System.out.println("\t" + id + "." + contador + " "
+					+ capitulos.getName());
 
 			if (!capitulos.getChilds().isEmpty()) {
 				NodeList subCapitulos = capitulos.getChilds().getFirst();
@@ -151,14 +174,16 @@ public class List {
 	}
 
 	/**
-	 * Llama a la funcion getNodeById para obtener el nodo buscado, una vez que lo encuentra le pide al nodo
-	 * que se agregue la palabra clave Retorna true si existe un nodo con el id recibido por parametro y pudo
-	 * agregar la palabra clave, en caso contrario retorna false
+	 * Llama a la funcion getNodeById para obtener el nodo buscado, una vez que
+	 * lo encuentra le pide al nodo que se agregue la palabra clave Retorna true
+	 * si existe un nodo con el id recibido por parametro y pudo agregar la
+	 * palabra clave, en caso contrario retorna false
 	 * 
 	 * @param word
 	 *            - String - Palabra clave
 	 * @param id
-	 *            - String - id del nodo al que se le desea agregar la palabra clave
+	 *            - String - id del nodo al que se le desea agregar la palabra
+	 *            clave
 	 * 
 	 * @return Boolean
 	 */
@@ -166,23 +191,25 @@ public class List {
 		boolean resultado = false;
 
 		String[] cap = id.split("[^0-9]");
-		NodeList inicioCapitulo = this.getNodeById(cap[0], this.getFirst(), this.vacio);
-
+		NodeList inicioCapitulo = this.getNodeById(cap, cap.length, 0, this.first);
 		if (inicioCapitulo != null && !inicioCapitulo.findKeyWord(word)) {
-			NodeList node = this.getNodeById(id, this.getFirst(), this.vacio);
-			if (node != null) {
-				node.addKeyword(word);
+			//NodeList node = this.getNodeById(id, this.getFirst(), this.vacio);
+			//if (node != null) {
+				inicioCapitulo.addKeyword(word);
 				resultado = true;
-			} else {
-				resultado = false;
-			}
+			//} else {
+				//resultado = false;
+			//}
+		}else{
+			resultado = false;
 		}
 		return resultado;
 	}
 
 	/**
-	 * Dado un id recorre todos los hijos y hermanos del nodo y agrega el nombre y sus palabras claves
-	 * correspondientes a un string, para posteriormente devolverlo
+	 * Dado un id recorre todos los hijos y hermanos del nodo y agrega el nombre
+	 * y sus palabras claves correspondientes a un string, para posteriormente
+	 * devolverlo
 	 * 
 	 * @param IdCount
 	 *            - String - Se debe pasar un string vacio, es decir ""
@@ -197,7 +224,8 @@ public class List {
 			while (aux != null) {
 				ref++;
 				String newId = IdCount + ref + this.vacio;
-				res.append("\n " + newId + " " + aux.getName() + aux.getKewywordToString());
+				res.append("\n " + newId + " " + aux.getName()
+						+ aux.getKewywordToString());
 				if (!aux.getChilds().isEmpty()) {
 					aux.getChilds().toStringWithKeywords(newId + ".", res);
 				}
@@ -210,7 +238,9 @@ public class List {
 
 	public boolean deleteKeyword(String id, String word) {
 		boolean result = false;
-		NodeList wanted = this.getNodeById(id, this.getFirst(), this.vacio);
+		String[] cap = id.split("[^0-9]");
+		NodeList wanted = this.getNodeById(cap, cap.length, 0, this.first);
+		//getNodeById(id, this.getFirst(), this.vacio);
 		if (wanted != null) {
 			result = wanted.getKeywordList().deleteKeyword(word);
 		}
@@ -219,7 +249,7 @@ public class List {
 
 	/** Retorna el nodo que tenga mismo nombre al recibido por parametro **/
 	public boolean isRepeatedName(String name) {
-		if(this.first== null){
+		if (this.first == null) {
 			return false;
 		}
 		if (this.getNodeByName(name) != null) {
@@ -227,7 +257,7 @@ public class List {
 		} else {
 			return false;
 		}
-		
+
 	}
 
 	private NodeList getNodeByNameOld(String name, NodeList node) {
@@ -244,7 +274,7 @@ public class List {
 		}
 		return null;
 	}
-	
+
 	private NodeList getNodeByName(String name) {
 		NodeList aux = this.first;
 		NodeList result = null;
@@ -253,10 +283,10 @@ public class List {
 				result = aux;
 			} else {
 				if (!aux.getChilds().isEmpty()) {
-					result= aux.getChilds().getNodeByName(name);
+					result = aux.getChilds().getNodeByName(name);
 				}
 			}
-			if(result != null){
+			if (result != null) {
 				return result;
 			}
 			aux = aux.getNext();
@@ -277,15 +307,19 @@ public class List {
 			if (keyList != null) {
 				while (keyList != null) {
 
-					if (keyList.getKeyword() != null && keyList.getKeyword().toLowerCase().equals(key.toLowerCase())) {
+					if (keyList.getKeyword() != null
+							&& keyList.getKeyword().toLowerCase().equals(
+									key.toLowerCase())) {
 
 						System.out.print(id);
-						System.out.println("\t\t\t" + libro.getName() + " : " + key);
+						System.out.println("\t\t\t" + libro.getName() + " : "
+								+ key);
 
 						if (!libro.getChilds().isEmpty()) {
 							int contador = 1;
 							NodeList capitulos = libro.getChilds().getFirst();
-							this.showChildrensChapterWhithKey(capitulos, idStr, contador, key, resultado);
+							this.showChildrensChapterWhithKey(capitulos, idStr,
+									contador, key, resultado);
 							keyList = keyList.getNext();
 						}
 					} else {
@@ -301,23 +335,28 @@ public class List {
 		return resultado;
 	}
 
-	public void showChildrensChapterWhithKey(NodeList capitulos, String id, int contador, String key, boolean resultado) {
+	public void showChildrensChapterWhithKey(NodeList capitulos, String id,
+			int contador, String key, boolean resultado) {
 		while (capitulos != null) {
 
 			KeywordNode keyList = capitulos.getKeywordList().getFirst();
 			if (keyList != null) {
 				while (keyList != null) {
 					if (keyList.getKeyword() != null) {
-						if (keyList.getKeyword().toLowerCase().equals(key.toLowerCase())) {
-							System.out.println(id + "." + contador + "\t\t\t" + capitulos.getName() + " : " + key);
+						if (keyList.getKeyword().toLowerCase().equals(
+								key.toLowerCase())) {
+							System.out.println(id + "." + contador + "\t\t\t"
+									+ capitulos.getName() + " : " + key);
 							resultado = true;
 
 							if (!capitulos.getChilds().isEmpty()) {
-								NodeList subCapitulos = capitulos.getChilds().getFirst();
+								NodeList subCapitulos = capitulos.getChilds()
+										.getFirst();
 
 								String idCompleto = id + "." + contador;
 								int nuevo = 1;
-								showChildrensChapterWhithKey(subCapitulos, idCompleto, nuevo, key, resultado);
+								showChildrensChapterWhithKey(subCapitulos,
+										idCompleto, nuevo, key, resultado);
 							}
 						}
 						keyList = keyList.getNext();
@@ -335,7 +374,8 @@ public class List {
 
 					String idCompleto = id + "." + contador;
 					int nuevo = 1;
-					showChildrensChapterWhithKey(subCapitulos, idCompleto, nuevo, key, resultado);
+					showChildrensChapterWhithKey(subCapitulos, idCompleto,
+							nuevo, key, resultado);
 				}
 				contador++;
 				capitulos = capitulos.getNext();
@@ -343,21 +383,25 @@ public class List {
 		}
 	}
 
-	public boolean deleteNode(StringList vecNroCap, int tamanio, int lugarEnElArrayActual, List list) {
+	public boolean deleteNode(StringList vecNroCap, int tamanio,
+			int lugarEnElArrayActual, List list) {
 		boolean resultado = false;
 		if (!list.isEmpty()) {
 			if (lugarEnElArrayActual == tamanio) {
-				resultado = deleteWithinList(list, vecNroCap.getNodeById(tamanio).getDataValue());
+				resultado = deleteWithinList(list, vecNroCap.getNodeById(
+						tamanio).getDataValue());
 			} else {
 				NodeList positionNode = list.getFirst();
 				String pos = 1 + this.vacio;
 				int conter = 1;
-				while (!pos.equals(vecNroCap.getNodeById(lugarEnElArrayActual).getDataValue())) {
+				while (!pos.equals(vecNroCap.getNodeById(lugarEnElArrayActual)
+						.getDataValue())) {
 					positionNode = positionNode.getNext();
 					conter += 1;
 					pos = conter + this.vacio;
 				}
-				resultado = deleteNode(vecNroCap, tamanio, lugarEnElArrayActual + 1, positionNode.getChilds());
+				resultado = deleteNode(vecNroCap, tamanio,
+						lugarEnElArrayActual + 1, positionNode.getChilds());
 			}
 		}
 		return resultado;
@@ -372,13 +416,14 @@ public class List {
 		} else {
 			NodeList positionNode = list.getFirst();
 			int pos = 1;
-			String posString = pos+1+""; 
+			String posString = pos + 1 + "";
 			while (!posString.equals(position) && positionNode != null) {
 				positionNode = positionNode.getNext();
 				pos++;
-				posString = pos+1+""; 
+				posString = pos + 1 + "";
 			}
-			//pregunto para asegurarme que con el while me quede con el hno del que quiero borrar
+			// pregunto para asegurarme que con el while me quede con el hno del
+			// que quiero borrar
 			if (positionNode != null && positionNode.getNext() != null) {
 				positionNode.getNext().getChilds().deleteAll();
 				positionNode.setNext(positionNode.getNext().getNext());

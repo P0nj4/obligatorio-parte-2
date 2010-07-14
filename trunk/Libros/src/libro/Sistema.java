@@ -118,6 +118,9 @@ public class Sistema {
 	 * @precondiciones: 
 	 * nroCapitulo debe existir. 
 	 * No puede haber palabras clave repetidas en un mismo capítulo. Tampoco se podrá repetir la palabra clave con distinto formato de mayúsculas/minúsculas
+	 * 
+	 * @postcondiciones:
+	 * se agregara una nueva palabra clave al final de las palabras claves existentes, o al principio si no existe ninguna
 	 */
 	public Retorno AgregarPalabraClave(Libro l, String nroCapitulo, String clave) {
 		if (l.addKeyword(clave, nroCapitulo)) {
