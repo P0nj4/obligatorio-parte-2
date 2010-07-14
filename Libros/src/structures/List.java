@@ -219,26 +219,49 @@ public class List {
 
 	/** Retorna el nodo que tenga mismo nombre al recibido por parametro **/
 	public boolean isRepeatedName(String name) {
-		if (this.getNodeByName(name, this.getFirst()) != null) {
+		if(this.first== null){
+			return false;
+		}
+		if (this.getNodeByName(name) != null) {
 			return true;
 		} else {
 			return false;
 		}
+		
 	}
 
-	private NodeList getNodeByName(String name, NodeList node) {
+	private NodeList getNodeByNameOld(String name, NodeList node) {
 		NodeList aux = node;
 		while (aux != null) {
 			if (aux.getName().equals(name)) {
 				return aux;
 			} else {
 				if (!aux.getChilds().isEmpty()) {
-					return getNodeByName(name, node.getChilds().getFirst());
+					return getNodeByNameOld(name, node.getChilds().getFirst());
 				}
 			}
 			aux = aux.getNext();
 		}
 		return null;
+	}
+	
+	private NodeList getNodeByName(String name) {
+		NodeList aux = this.first;
+		NodeList result = null;
+		while (aux != null) {
+			if (aux.getName().equals(name)) {
+				result = aux;
+			} else {
+				if (!aux.getChilds().isEmpty()) {
+					result= aux.getChilds().getNodeByName(name);
+				}
+			}
+			if(result != null){
+				return result;
+			}
+			aux = aux.getNext();
+		}
+		return result;
 	}
 
 	public boolean showChaptersWithKey(String key) {
