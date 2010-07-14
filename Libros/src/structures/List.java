@@ -293,7 +293,7 @@ public class List {
 		}
 		return result;
 	}
-
+/*
 	public boolean showChaptersWithKey(String key) {
 		boolean resultado = false;
 
@@ -334,8 +334,22 @@ public class List {
 
 		return resultado;
 	}
-
-	public void showChildrensChapterWhithKey(NodeList capitulos, String id,
+*/
+	public void showChaptersWithKey(String idCount,String key, StringBuffer res) {
+		NodeList aux = this.first;
+		int i=1;
+		while(aux != null){
+			if(aux.getKeywordList().findWordChild(key)){
+				res.append("\n"+idCount+i + aux.getName());
+			}
+			//idCount += (i+"");
+			aux.getChilds().showChaptersWithKey(idCount+i+".",key, res);
+			i++;
+			aux= aux.getNext();
+		}
+	}
+	
+	/*public void showChildrensChapterWhithKey(NodeList capitulos, String id,
 			int contador, String key, boolean resultado) {
 		while (capitulos != null) {
 
@@ -382,7 +396,7 @@ public class List {
 			}
 		}
 	}
-
+*/
 	public boolean deleteNode(StringList vecNroCap, int tamanio,
 			int lugarEnElArrayActual, List list) {
 		boolean resultado = false;
