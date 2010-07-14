@@ -12,6 +12,17 @@ public class Sistema {
 		return libro;
 	}
 
+	/**
+	 * @param l - Libro.
+	 * @return
+	 * 
+	 * @Precondiciones: 
+	 * El libro recibido por parametro no debe ser nulo
+	 * 
+	 * @Postcondiciones:
+	 * Del libro recibido por parametro se le borrara cada uno de sus capitulos y los hijos de los mismos, 
+	 * además de las palabras claves de cada uno de estos
+	 */
 	public Libro vaciarLibro(Libro l) {
 		l.deleteAll();
 		return null;
