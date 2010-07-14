@@ -5,9 +5,9 @@ public class Main {
 	public static void main(String[] args) {
 		Sistema s = new Sistema();
 		Prueba p = new Prueba();
-
+		TestGerman(s);
 		// ----PRUEBASok---------------------------------------------------//
-		PruebaOK_1(s, p);
+		/*PruebaOK_1(s, p);
 		PruebaOK_2(s, p);
 		PruebaOK_3(s, p);
 		PruebaOK_4(s, p);
@@ -21,9 +21,41 @@ public class Main {
 		PruebaError_3(s, p);
 
 		// ----Resultados---------------------------------------------------//
-		p.imprimirResultadosPrueba();
+		p.imprimirResultadosPrueba();*/
 	}
 
+	public static void TestGerman(Sistema s) {
+
+		Libro l = s.crearLibro("Horacio Quiroga", "Cuentos");
+
+		s.AgregarCapitulo(l, "0", "El solitario");
+		s.AgregarCapitulo(l, "1", "El sol Parte 1");
+		s.AgregarCapitulo(l, "0", "La insolacion");
+		s.AgregarCapitulo(l, "2", "Parte 1");
+		s.AgregarCapitulo(l, "0", "El alambre de pua");
+		s.AgregarCapitulo(l, "2", "Parte 2");
+		s.AgregarCapitulo(l, "2.2", "Seccion 1");
+		s.AgregarCapitulo(l, "2.2", "Seccion 2");
+		s.AgregarCapitulo(l, "2", "Parte 3");
+		s.AgregarCapitulo(l, "2.3", " Seccion 3");
+		s.AgregarCapitulo(l, "2.3.1", " Nota");
+		s.AgregarCapitulo(l, "2.3", " Seccion 4");
+		
+		s.MostrarIndice(l);
+		//s.BorrarCapitulo(l, "2.2");
+		s.MostrarIndice(l);
+		s.AgregarPalabraClave(l, "2.3.1", "pepe");
+		s.BorrarPalabraClave(l, "2.3.1", "pepe");
+		s.MostrarCapitulosConClave(l, "pepe");
+		System.out.println(s.AgregarPalabraClave(l, "2.3.1", "pepe"));
+		s.MostrarCapitulosConClave(l, "asd");
+		s.MostrarIndiceNiveles(l, 2, 2);
+		s.vaciarLibro(l);
+
+
+	}
+
+	
 	/*--------Pruebas OK ---------------------------*/
 	public static void PruebaOK_1(Sistema s, Prueba p) {
 

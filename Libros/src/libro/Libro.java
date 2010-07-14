@@ -51,7 +51,13 @@ public class Libro {
 				this.getChapters().addAtLast(NodeName);
 			} else {
 				String[] cap = fatherId.split("[^0-9]");
-				NodeList subChapter = this.getChapters().getNodeById(cap, cap.length, 0, chapters.getFirst());
+				StringList list = new StringList();
+				int cant = 0;
+				for (String string : cap) {
+					cant++;
+					list.addAtLast(string);
+				}
+				NodeList subChapter = this.getChapters().getNodeById(list, cant, 0, chapters.getFirst());
 				if (subChapter == null) {
 					result = false;
 				} else {
@@ -120,7 +126,7 @@ public class Libro {
 		}
 		return this.chapters.deleteNode(list, cant, 0, this.chapters);
 	}
-
+	
 	public boolean showChaptersWithKey(String key) {
 		StringBuffer s = new StringBuffer();
 		this.chapters.showChaptersWithKey("",key,s);

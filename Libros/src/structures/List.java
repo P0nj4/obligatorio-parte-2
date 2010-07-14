@@ -48,21 +48,21 @@ public class List {
 	 *            Pasar "" siempre
 	 * @return nodeList
 	 */
-	public NodeList getNodeById(String[] id, int length, int currentPosition, NodeList node) {
+	public NodeList getNodeById(StringList id, int length, int currentPosition, NodeList node) {
 		NodeList aux = node;
 		int i = 1;
-		while (!id[currentPosition].equals(i + "")) {
-			if (node == null) {
+		while (!id.getNodeById(currentPosition).getDataValue().equals(i + "")) {
+			if (aux == null) {
 				return null;
 			} else {
-				node = node.getNext();
+				aux = aux.getNext();
 			}
 			i++;
 		}
 		if (length - 1 == currentPosition) {
-			return node;
+			return aux;
 		} else {
-			return getNodeById(id, length, currentPosition+1, node.getChilds().getFirst());
+			return getNodeById(id, length, currentPosition+1, aux.getChilds().getFirst());
 		}
 	}
 
@@ -191,15 +191,16 @@ public class List {
 		boolean resultado = false;
 
 		String[] cap = id.split("[^0-9]");
-		NodeList inicioCapitulo = this.getNodeById(cap, cap.length, 0, this.first);
+		StringList list = new StringList();
+		int cant = -1;
+		for (String string : cap) {
+			cant++;
+			list.addAtLast(string);
+		}
+		NodeList inicioCapitulo = this.getNodeById(list, cant, 0, this.first);
 		if (inicioCapitulo != null && !inicioCapitulo.findKeyWord(word)) {
-			//NodeList node = this.getNodeById(id, this.getFirst(), this.vacio);
-			//if (node != null) {
 				inicioCapitulo.addKeyword(word);
 				resultado = true;
-			//} else {
-				//resultado = false;
-			//}
 		}else{
 			resultado = false;
 		}
@@ -239,8 +240,13 @@ public class List {
 	public boolean deleteKeyword(String id, String word) {
 		boolean result = false;
 		String[] cap = id.split("[^0-9]");
-		NodeList wanted = this.getNodeById(cap, cap.length, 0, this.first);
-		//getNodeById(id, this.getFirst(), this.vacio);
+		StringList list = new StringList();
+		int cant = -1;
+		for (String string : cap) {
+			cant++;
+			list.addAtLast(string);
+		}
+		NodeList wanted = this.getNodeById(list, cant, 0, this.first);
 		if (wanted != null) {
 			result = wanted.getKeywordList().deleteKeyword(word);
 		}
@@ -258,21 +264,6 @@ public class List {
 			return false;
 		}
 
-	}
-
-	private NodeList getNodeByNameOld(String name, NodeList node) {
-		NodeList aux = node;
-		while (aux != null) {
-			if (aux.getName().equals(name)) {
-				return aux;
-			} else {
-				if (!aux.getChilds().isEmpty()) {
-					return getNodeByNameOld(name, node.getChilds().getFirst());
-				}
-			}
-			aux = aux.getNext();
-		}
-		return null;
 	}
 
 	private NodeList getNodeByName(String name) {
