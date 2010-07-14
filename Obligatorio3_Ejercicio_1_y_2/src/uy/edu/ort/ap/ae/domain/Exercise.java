@@ -78,9 +78,13 @@ public class Exercise implements IExercise {
 					nivelDeEnergiaActual = DescargoEnergia(mapa, iOrigen, jOrigen, nivelDeEnergiaActual);
 					numPasos++;
 					if (Exito(iOrigen, jOrigen, iDestino, jDestino)) {
-						copioCamino(mejoresCaminos, caminoActual);
 						if (datos.MaxEnergia < nivelDeEnergiaActual) {
 							datos.MaxEnergia = nivelDeEnergiaActual;
+							mejoresCaminos.erease();
+							copioCamino(mejoresCaminos, caminoActual);
+						}
+						if(datos.MaxEnergia == nivelDeEnergiaActual){
+							copioCamino(mejoresCaminos, caminoActual);
 						}
 					} else {
 						for (int x = iOrigen - 1; x < iOrigen + 2; x++) {
@@ -109,17 +113,22 @@ public class Exercise implements IExercise {
 	}
 
 	private boolean MeAlcanzaEnergiaYpasos(int nivelDeEnergiaActual, int[][] mapa, int x, int y, int numPasos, int maxPasos) {
+		try{
 		if ((mapa[y][x] + nivelDeEnergiaActual) > 0 && numPasos < maxPasos)
 			return true;
 		else
 			return false;
+		}catch(Exception ex){
+			System.out.println("");
+			return false;
+		}
 	}
 
 	private boolean Exito(int x, int y, int xDest, int yDest) {
 		if (x == xDest && y == yDest)
 			return true;
 		else
-			return false;
+			return false; 
 	}
 
 	private void AgregoPaso(ILista caminoActual, int x, int y) {
@@ -132,7 +141,7 @@ public class Exercise implements IExercise {
 	}
 
 	private int DescargoEnergia(int[][] mapa, int x, int y, int nivelDeEnergiaActual) {
-		return nivelDeEnergiaActual + mapa[y][x];
+		return (nivelDeEnergiaActual + mapa[y][x])-1;
 	}
 
 	private void quitoPaso(ILista caminoActual, int x, int y) {
