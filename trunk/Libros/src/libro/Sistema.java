@@ -25,9 +25,14 @@ public class Sistema {
 	 * @return
 	 * 
 	 * @Precondiciones: 
-	 * El nroPadre debe existir en el libro.
+	 * El nroPadre no debe ser un String vacio.
+	 * Si se deseara que el capitulo a agregar sea un hijo directo del libro se debe enviar "0" en nroPadre
+	 * El nroPadre debe ser un indice que corresponda a un capitulo existente
 	 * La descripción del capitulo debe ser única.
 	 * 
+	 * @Postcondiciones:
+	 * En caso de que no se cumplan alguna de las anteriores, la insercion del capitulo quedara sin efecto, ademas se retornara error.
+	 * En caso de que se cumplan las precondiciones, el capitulo sera insertado como hijo del numero recibido como padre en el parametro nroPadre
 	 */
 	public Retorno AgregarCapitulo(Libro l, String nroPadre, String descripcion) {
 		if (l.addChapter(descripcion, nroPadre)) {
