@@ -1,8 +1,7 @@
 package structures;
 
-
 public class NodeList {
-	
+
 	private String name;
 
 	private NodeList next;
@@ -64,9 +63,21 @@ public class NodeList {
 	public String getKewywordToString() {
 		return ": " + this.getKeywordList().toString();
 	}
-	
-	public boolean findKeyWord(String keyWord){
-		return this.getKeywordList().findWordChild(keyWord);
+
+	public boolean findKeyWord(String keyWord) {
+		boolean resultado = false;
+		resultado = this.getKeywordList().findWordChild(keyWord);
+
+		if (!resultado && !this.getChilds().isEmpty()) {
+			NodeList aux = this.getChilds().getFirst();
+
+			while (aux != null && resultado == false) {
+				resultado = this.getKeywordList().findWordChild(keyWord);
+				aux = aux.getNext();
+			}
+		}
+
+		return resultado;
 	}
 
 }
