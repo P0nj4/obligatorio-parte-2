@@ -62,10 +62,8 @@ public class Stack implements ILista, Cloneable {
 	}
 
 	private String desdeAtras(Node n) {
-		int[][] mapa1 = { { -5, -3, 15, -2, -9, -15, -20, 2 }, { 3, 0, 2, -4, -3, -4, 23, 12 }, { 5, -3, 15, -2, -7, -5, -14, 2 }, { 6, 9, 1, 8, -9, 12, 10, 5 }, { 5, -3, 6, -2, 3, -19, 8, 2 } };
-
 		if (n != null) {
-			return desdeAtras(n.getNext()) + "Paso: X " + ((Paso) n.getElement()).ejeX + " Y " + ((Paso) n.getElement()).ejeY + " " +mapa1[((Paso) n.getElement()).ejeY][((Paso) n.getElement()).ejeX] + " ";
+			return desdeAtras(n.getNext()) + "Paso: (X " + ((Paso) n.getElement()).ejeX + " Y " + ((Paso) n.getElement()).ejeY + "), ";
 		}
 		return "";
 	}

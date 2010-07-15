@@ -67,7 +67,8 @@ public class Exercise implements IExercise {
 	 * 
 	 * */
 	@Override
-	public void explorador(int iOrigen, int jOrigen, int iDestino, int jDestino, int nivelDeEnergiaActual, int numPasos, int maxPasos, int mejorNivelDeEnergia, ILista caminoActual, ILista mejoresCaminos, int[][] mapa, int n, int m) {
+	public void explorador(int iOrigen, int jOrigen, int iDestino, int jDestino, int nivelDeEnergiaActual, int numPasos, int maxPasos,
+			int mejorNivelDeEnergia, ILista caminoActual, ILista mejoresCaminos, int[][] mapa, int n, int m) {
 		// TODO Auto-generated method stub
 		Util datos = new Util();
 		datos.MaxEnergia = mejorNivelDeEnergia;
@@ -79,18 +80,20 @@ public class Exercise implements IExercise {
 
 	}
 
-	private void explorador(int iOrigen, int jOrigen, int iDestino, int jDestino, int numPasos, int maxPasos, int nivelDeEnergiaActual, Util datos, ILista caminoActual, ILista mejoresCaminos, int[][] mapa, int n, int m) {
+	private void explorador(int iOrigen, int jOrigen, int iDestino, int jDestino, int numPasos, int maxPasos, int nivelDeEnergiaActual, Util datos,
+			ILista caminoActual, ILista mejoresCaminos, int[][] mapa, int n, int m) {
 		if (PerteneceAlMapa(n, m, iOrigen, jOrigen)) {
 			if (!Pase(caminoActual, iOrigen, jOrigen)) {
 				if (MeAlcanzaEnergiaYpasos(nivelDeEnergiaActual, mapa, iOrigen, jOrigen, numPasos, maxPasos)) {
 					AgregoPaso(caminoActual, iOrigen, jOrigen);
 					nivelDeEnergiaActual = DescargoEnergia(mapa, iOrigen, jOrigen, nivelDeEnergiaActual);
 					numPasos++;
+
 					if (Exito(iOrigen, jOrigen, iDestino, jDestino)) {
-						
+
 						if (datos.MaxEnergia < nivelDeEnergiaActual) {
 							datos.MaxEnergia = nivelDeEnergiaActual;
-//							mejoresCaminos.erease();
+							mejoresCaminos.erease();
 							copioCamino(mejoresCaminos, caminoActual);
 						}
 						if (datos.MaxEnergia == nivelDeEnergiaActual) {
@@ -99,7 +102,8 @@ public class Exercise implements IExercise {
 					} else {
 						for (int x = iOrigen - 1; x < iOrigen + 2; x++) {
 							for (int y = jOrigen - 1; y < jOrigen + 2; y++) {
-								explorador(x, y, iDestino, jDestino, numPasos, maxPasos, nivelDeEnergiaActual, datos, caminoActual, mejoresCaminos, mapa, n, m);
+								explorador(x, y, iDestino, jDestino, numPasos, maxPasos, nivelDeEnergiaActual, datos, caminoActual, mejoresCaminos,
+										mapa, n, m);
 							}
 						}
 						numPasos--;
@@ -123,7 +127,7 @@ public class Exercise implements IExercise {
 	}
 
 	private boolean MeAlcanzaEnergiaYpasos(int nivelDeEnergiaActual, int[][] mapa, int x, int y, int numPasos, int maxPasos) {
-		if ((mapa[y][x] + nivelDeEnergiaActual) -1 > 0 && numPasos < maxPasos) {
+		if ((mapa[y][x] + (nivelDeEnergiaActual - 1)) > 0 && (numPasos < maxPasos)) {
 			return true;
 		} else {
 			return false;
@@ -147,11 +151,11 @@ public class Exercise implements IExercise {
 	}
 
 	private int DescargoEnergia(int[][] mapa, int x, int y, int nivelDeEnergiaActual) {
-		return (nivelDeEnergiaActual + mapa[y][x]) - 1;
+		return ((nivelDeEnergiaActual - 1) + mapa[y][x]);
 	}
 
 	private void quitoPaso(ILista caminoActual, int x, int y) {
-		(caminoActual).tail();
+		caminoActual.tail();
 	}
 
 	/**
@@ -252,16 +256,6 @@ public class Exercise implements IExercise {
 		}
 
 		return cantObj;
-	}
-
-	private int max(int a, int b) {
-
-		if (a < b) {
-			return b;
-		} else {
-			return a;
-		}
-
 	}
 
 	private int[][] generarTabla(int cantidadPlatos, int caloriasMaxima, int[][] tablaMenu) {
