@@ -91,7 +91,7 @@ public class Queue implements ILista, Cloneable {
 		String out ="";
 		Node aux = this.front;
 		while (aux!=null){
-			out+= aux.getElement().toString() + " - ";
+			out+= "Camino" + aux.getElement().toString() + " Fin camino \n";
 			aux = aux.getNext();
 		}
 		return out;
