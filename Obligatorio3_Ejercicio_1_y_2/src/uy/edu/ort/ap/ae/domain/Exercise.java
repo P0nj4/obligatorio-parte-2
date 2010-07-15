@@ -87,9 +87,10 @@ public class Exercise implements IExercise {
 					nivelDeEnergiaActual = DescargoEnergia(mapa, iOrigen, jOrigen, nivelDeEnergiaActual);
 					numPasos++;
 					if (Exito(iOrigen, jOrigen, iDestino, jDestino)) {
+						
 						if (datos.MaxEnergia < nivelDeEnergiaActual) {
 							datos.MaxEnergia = nivelDeEnergiaActual;
-							mejoresCaminos.erease();
+//							mejoresCaminos.erease();
 							copioCamino(mejoresCaminos, caminoActual);
 						}
 						if (datos.MaxEnergia == nivelDeEnergiaActual) {
