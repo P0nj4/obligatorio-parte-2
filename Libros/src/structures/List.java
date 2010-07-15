@@ -253,27 +253,7 @@ public class List {
 		return result;
 	}
 
-	/*
-	 * public boolean showChaptersWithKey(String key) { boolean resultado = false;
-	 * 
-	 * NodeList libro = this.first;
-	 * 
-	 * int id = 1; String idStr = id + this.vacio; while (libro != null) {
-	 * 
-	 * KeywordNode keyList = libro.getKeywordList().getFirst(); if (keyList != null) { while (keyList != null)
-	 * {
-	 * 
-	 * if (keyList.getKeyword() != null && keyList.getKeyword().toLowerCase().equals( key.toLowerCase())) {
-	 * 
-	 * System.out.print(id); System.out.println("\t\t\t" + libro.getName() + " : " + key);
-	 * 
-	 * if (!libro.getChilds().isEmpty()) { int contador = 1; NodeList capitulos =
-	 * libro.getChilds().getFirst(); this.showChildrensChapterWhithKey(capitulos, idStr, contador, key,
-	 * resultado); keyList = keyList.getNext(); } } else { keyList = keyList.getNext(); } } } id = id + 1;
-	 * idStr = id + this.vacio; libro = libro.getNext(); }
-	 * 
-	 * return resultado; }
-	 */
+	
 	public void showChaptersWithKey(String idCount, String key, StringBuffer res) {
 		NodeList aux = this.first;
 		int i = 1;
@@ -288,27 +268,7 @@ public class List {
 		}
 	}
 
-	/*
-	 * public void showChildrensChapterWhithKey(NodeList capitulos, String id, int contador, String key,
-	 * boolean resultado) { while (capitulos != null) {
-	 * 
-	 * KeywordNode keyList = capitulos.getKeywordList().getFirst(); if (keyList != null) { while (keyList !=
-	 * null) { if (keyList.getKeyword() != null) { if (keyList.getKeyword().toLowerCase().equals(
-	 * key.toLowerCase())) { System.out.println(id + "." + contador + "\t\t\t" + capitulos.getName() + " : " +
-	 * key); resultado = true;
-	 * 
-	 * if (!capitulos.getChilds().isEmpty()) { NodeList subCapitulos = capitulos.getChilds() .getFirst();
-	 * 
-	 * String idCompleto = id + "." + contador; int nuevo = 1; showChildrensChapterWhithKey(subCapitulos,
-	 * idCompleto, nuevo, key, resultado); } } keyList = keyList.getNext(); } else { contador++; capitulos =
-	 * capitulos.getNext(); } } contador++; capitulos = capitulos.getNext();
-	 * 
-	 * } else { if (!capitulos.getChilds().isEmpty()) { NodeList subCapitulos =
-	 * capitulos.getChilds().getFirst();
-	 * 
-	 * String idCompleto = id + "." + contador; int nuevo = 1; showChildrensChapterWhithKey(subCapitulos,
-	 * idCompleto, nuevo, key, resultado); } contador++; capitulos = capitulos.getNext(); } } }
-	 */
+	
 	public boolean deleteNode(StringList vecNroCap, int tamanio, int lugarEnElArrayActual, List list) {
 		boolean resultado = false;
 		if (!list.isEmpty()) {
