@@ -58,11 +58,10 @@ public class Test {
 		System.out.println("salgo :" + mapa1[2][1]);
 		System.out.println("llego :" +  mapa1[4][6]);
 		
-//		int[fila][columna]
 
 		runTestExplorador (2,1, 4,7,  5, 10, mapa1, 5, 8, " \r\nPrueba "+test);
-//		runTestExplorador (0,0, 4,7, 14,  8, mapa1, 5, 8, " \r\nPrueba "+test);
-//		runTestExplorador (2,1, 0,0,  4,  5, mapa1, 3, 3, " \r\nPrueba "+test);
+		runTestExplorador (0,0, 4,7, 14,  8, mapa1, 5, 8, " \r\nPrueba "+test);
+		runTestExplorador (2,1, 0,0,  4,  5, mapa1, 3, 3, " \r\nPrueba "+test);
 			
 		test --;
 		output+= "\n\r\n\r------------------------------------------------------- \r\n";
