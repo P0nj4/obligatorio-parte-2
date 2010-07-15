@@ -304,8 +304,7 @@ public class List {
 				pos++;
 				posString = pos + 1 + "";
 			}
-			// pregunto para asegurarme que con el while me quede con el hno del
-			// que quiero borrar
+			
 			if (positionNode != null && positionNode.getNext() != null) {
 				positionNode.getNext().getChilds().deleteAll();
 				positionNode.setNext(positionNode.getNext().getNext());
