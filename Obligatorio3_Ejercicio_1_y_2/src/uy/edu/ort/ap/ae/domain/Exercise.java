@@ -20,7 +20,16 @@ public class Exercise implements IExercise {
 	}
 
 	/**
-	 * Un explorador se encuentra perdido en el desierto y desea llegar a un punto de salida dado por sus coordenadas en un mapa de NxM. El explorador puede moverse hacia una de las casillas adyacentes y por cada paso que da consume una unidad de energ�a. Si su nivel de energ�a llega a 0 el explorador fallece. Al pasar por una casilla del mapa el explorador var�a su nivel de energ�a ya que en estas figura un n�mero que puede ser negativo o positivo que le resta o suma al nivel de energ�a del explorador. El explorador dispone de un n�mero m�ximo de pasos para dar hasta llegar al punto de destino. Se pide desarrollar una funci�n que retorne (y posteriormente muestre) una lista con los caminos que, sin exceder el m�ximo n�mero de pasos que el explorador puede dar, lo conduzcan desde el origen al destino con el mayor nivel de energ�a posible. Se debe aplicar backtracking y realizar las podas y controles de factibilidad adecuados.
+	 * Un explorador se encuentra perdido en el desierto y desea llegar a un punto de salida dado por sus
+	 * coordenadas en un mapa de NxM. El explorador puede moverse hacia una de las casillas adyacentes y por
+	 * cada paso que da consume una unidad de energ�a. Si su nivel de energ�a llega a 0 el explorador fallece.
+	 * Al pasar por una casilla del mapa el explorador var�a su nivel de energ�a ya que en estas figura un
+	 * n�mero que puede ser negativo o positivo que le resta o suma al nivel de energ�a del explorador. El
+	 * explorador dispone de un n�mero m�ximo de pasos para dar hasta llegar al punto de destino. Se pide
+	 * desarrollar una funci�n que retorne (y posteriormente muestre) una lista con los caminos que, sin
+	 * exceder el m�ximo n�mero de pasos que el explorador puede dar, lo conduzcan desde el origen al destino
+	 * con el mayor nivel de energ�a posible. Se debe aplicar backtracking y realizar las podas y controles de
+	 * factibilidad adecuados.
 	 * 
 	 * <p>
 	 * <b>Pre-condiciones:</b> Detallar las precondiciones
@@ -62,7 +71,7 @@ public class Exercise implements IExercise {
 		// TODO Auto-generated method stub
 		Util datos = new Util();
 		datos.MaxEnergia = mejorNivelDeEnergia;
-		explorador(iOrigen, jOrigen, iDestino, jDestino, numPasos, maxPasos, nivelDeEnergiaActual, datos, caminoActual, mejoresCaminos, mapa, n, m);
+		explorador(jOrigen, iOrigen, jDestino, iDestino, numPasos, maxPasos, nivelDeEnergiaActual, datos, caminoActual, mejoresCaminos, mapa, m, n);
 
 		// ILista unCamino = (ILista)mejoresCaminos.tail();
 		// String tml = unCamino.toString();
@@ -83,7 +92,7 @@ public class Exercise implements IExercise {
 							mejoresCaminos.erease();
 							copioCamino(mejoresCaminos, caminoActual);
 						}
-						if(datos.MaxEnergia == nivelDeEnergiaActual){
+						if (datos.MaxEnergia == nivelDeEnergiaActual) {
 							copioCamino(mejoresCaminos, caminoActual);
 						}
 					} else {
@@ -113,13 +122,9 @@ public class Exercise implements IExercise {
 	}
 
 	private boolean MeAlcanzaEnergiaYpasos(int nivelDeEnergiaActual, int[][] mapa, int x, int y, int numPasos, int maxPasos) {
-		try{
-		if ((mapa[y][x] + nivelDeEnergiaActual) > 0 && numPasos < maxPasos)
+		if ((mapa[y][x] + nivelDeEnergiaActual) -1 > 0 && numPasos < maxPasos) {
 			return true;
-		else
-			return false;
-		}catch(Exception ex){
-			System.out.println("");
+		} else {
 			return false;
 		}
 	}
@@ -128,7 +133,7 @@ public class Exercise implements IExercise {
 		if (x == xDest && y == yDest)
 			return true;
 		else
-			return false; 
+			return false;
 	}
 
 	private void AgregoPaso(ILista caminoActual, int x, int y) {
@@ -141,7 +146,7 @@ public class Exercise implements IExercise {
 	}
 
 	private int DescargoEnergia(int[][] mapa, int x, int y, int nivelDeEnergiaActual) {
-		return (nivelDeEnergiaActual + mapa[y][x])-1;
+		return (nivelDeEnergiaActual + mapa[y][x]) - 1;
 	}
 
 	private void quitoPaso(ILista caminoActual, int x, int y) {
@@ -149,7 +154,11 @@ public class Exercise implements IExercise {
 	}
 
 	/**
-	 *Un nutricionista va a un restaurante. En la carta aparecen todos los platos disponibles con el n�mero de calor�as que contiene cada uno. El nutricionista conoce el n�mero exacto de calor�as que su cuerpo necesita en esa comida y deber� encontrar el men� que cubra el mayor n�mero de calor�as que no excede las necesarias sin repetir platos. Dise�ar un algoritmo basado en programaci�n din�mica que determine qu� platos forman parte del men� �ptimo y el n�mero de calor�as que aporta dicho men�.
+	 *Un nutricionista va a un restaurante. En la carta aparecen todos los platos disponibles con el n�mero
+	 * de calor�as que contiene cada uno. El nutricionista conoce el n�mero exacto de calor�as que su cuerpo
+	 * necesita en esa comida y deber� encontrar el men� que cubra el mayor n�mero de calor�as que no excede
+	 * las necesarias sin repetir platos. Dise�ar un algoritmo basado en programaci�n din�mica que determine
+	 * qu� platos forman parte del men� �ptimo y el n�mero de calor�as que aporta dicho men�.
 	 * 
 	 * <p>
 	 * <b>Pre-condiciones:</b> Detallar las precondiciones
@@ -159,7 +168,9 @@ public class Exercise implements IExercise {
 	 * </p>
 	 * 
 	 *@param menu
-	 *            array con las calorias de cada plato. Cada indice corresponde a un plato, y el valor en el array es el n�mero de calorias del plato de ese indice, comienza a partir del indice 1, la posicion cero no se considerara como plato
+	 *            array con las calorias de cada plato. Cada indice corresponde a un plato, y el valor en el
+	 *            array es el n�mero de calorias del plato de ese indice, comienza a partir del indice 1, la
+	 *            posicion cero no se considerara como plato
 	 *@param cantidadPlatos
 	 *            cantidad de platos del menu. Corresponde al tama�o-1 de la tabla menu
 	 *@param caloriasMaxima
@@ -167,7 +178,8 @@ public class Exercise implements IExercise {
 	 *@param tablaMenu
 	 *            tabla para memorizacion
 	 *@param menuOptimo
-	 *            array donde se indicara con <code>true</code> cuando el plato de igual indice este incluido en el menu optimo. El tamano del array sera cantidadPlatos+1
+	 *            array donde se indicara con <code>true</code> cuando el plato de igual indice este incluido
+	 *            en el menu optimo. El tamano del array sera cantidadPlatos+1
 	 * 
 	 *@return numero de calorias del menu optimo
 	 */
